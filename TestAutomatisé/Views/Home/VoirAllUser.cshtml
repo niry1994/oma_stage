@@ -1,0 +1,70 @@
+﻿@model IEnumerable<TestAutomatisé.DomaineClasses.Personne>
+
+@{
+    ViewBag.Title = "VoirAllUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>VoirAllUser</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Trigramme)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomPersonne)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mdp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactPersonne)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AdressePersonne)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailPersonne)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UrlPhoto)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Trigramme)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomPersonne)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mdp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactPersonne)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdressePersonne)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailPersonne)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UrlPhoto)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PersonneId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PersonneId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PersonneId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,334 @@
+﻿
+.Cont
+{
+    position:fixed;
+}
+.bord:focus{
+     border: 1px solid #fe7902!important;
+    outline: none;
+    -webkit-appearance: none;
+    color:#ffffff;
+   
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+}
+.bord{
+     border: 1px solid #fff!important;
+    outline: none;
+    -webkit-appearance: none;
+   
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+}
+.recherche{
+     border: 1px solid #fff!important;
+    outline: none;
+    -webkit-appearance: none;
+     background:transparent;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    width:200px!important;
+    height:30px;
+    margin:20px 0 15px auto;
+}
+.recherche:focus{
+    background-color:#1f1b18;
+}
+.bRecherche{
+     height:30px;
+     margin:20px 25px 15px 5px;
+      border: 1px solid #fff!important;
+    outline: none;
+    -webkit-appearance: none;
+     background:transparent;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    position:relative;
+}
+.Deconnexion{
+    font-size: 1em;
+    color: #fff;
+    background:none;
+    border: 1px solid #fe7902;
+    outline: none;
+    cursor: pointer;
+    padding: .6em 1em;
+    -webkit-appearance: none;
+    width:80%;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    margin-top: 2em;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    position:relative;
+}
+.Deconnexion:hover{
+ 
+         color: #fff;
+         border: 1px solid #fe7902;
+         position:relative;
+}
+.book-form form input[type="submit"] {
+    font-size: 1em;
+    color: #ffffff;
+    background: #fe7902;
+    border: 1px solid #fe7902;
+    outline: none;
+    cursor: pointer;
+    padding: .6em 1em;
+    -webkit-appearance: none;
+    width: 200%;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    margin-top: 2em;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    position:absolute;
+}
+ .book-form form input[type="submit"]:hover {
+    width:200%;
+    background: transparent;
+    color: #fff;   
+     border: 1px solid #2baf2b;
+} 
+ .upload{
+    
+    text-decoration:none!important;
+    font-size: 1em;
+    color: #fff;
+    background: #fe7902;
+    border: 1px solid #fe7902;
+    outline: none;
+    cursor: pointer;
+    padding: .6em 1em;
+    -webkit-appearance: none;
+    /*width:block;*/
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    margin-top: 2em;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+   text-decoration:none;
+   position:relative;
+   height:36px;
+   bottom:27px;
+ }
+ .upload:hover {
+        /*width: 200%;*/
+        background: transparent;
+        color: #fff;
+         border: 1px solid #fe7902;
+    }
+ .re{
+    font-size: 1em;
+    color: #fff;
+    background: #fe7902;
+    border: 1px solid #fe7902;
+    outline: none;
+    cursor: pointer;
+    padding: .6em 1em;
+    -webkit-appearance: none;
+    width:200%;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    margin-top: 2em;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    position:relative;
+}
+
+    .re:hover {
+        width: 200%;
+        background: transparent;
+        color: #fff;
+         border: 1px solid #ff0000;
+    }
+     .inscrire{
+    Margin:0px 20px!important;
+   
+    text-decoration:none!important;
+   
+    height:6%!important;
+    font-size: 1em;
+    color: #fff;
+    background: #fe7902;
+    border: 1px solid #fe7902;
+    outline: none;
+    cursor: pointer;
+    padding: .6em 1em;
+    -webkit-appearance: none;
+ 
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    margin-top: 2em;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    position:absolute;
+}
+    .inscrire:hover {
+        width:70%!important;
+        height:6%!important;
+;        background: transparent;
+        color: #fff!important;
+         border: 1px solid #04fef6;
+         text-decoration:none;
+  
+    }
+ .acceuil{
+      background-image:url("../Images/orange-xavier-nielbilan.ch_-680x365_c.jpg");
+       background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    
+ }
+  .connecter{
+    
+    text-decoration:none!important;
+    font-size: 1em;
+    color: #fff;
+    background: #fe7902;
+    border: 1px solid #fe7902;
+    outline: none;
+    cursor: pointer;
+    padding: .6em 1em;
+    -webkit-appearance: none;
+    width:80%;
+    height:6%!important;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    margin-top: 2em;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+   text-decoration:none;
+   position:relative;
+   height:36px;
+   bottom:27px;
+ }
+ .connecter:hover {
+        width:80%!important;
+        height:6%!important;
+        background: transparent;
+        color: #fff!important;
+         border: 1px solid #fe7902;
+    }
+  .send{
+    
+    text-decoration:none!important;
+    font-size: 1em;
+    color: #fff;
+    background: #fe7902;
+    border: 1px solid #fe7902;
+    outline: none;
+    cursor: pointer;
+    padding: .6em 1em;
+    -webkit-appearance: none;
+    width:88%;
+    height:6%!important;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    margin-top: 2em;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+   text-decoration:none;
+   position:relative;
+   height:36px;
+   bottom:27px;
+ }
+ .send:hover {
+        width:88%!important;
+        height:6%!important;
+        background: transparent;
+        color: #fff!important;
+         border: 1px solid #fe7902;
+    }
+ .modifier{
+    
+    text-decoration:none!important;
+    font-size: 1em;
+    color: #fff;
+    background: #fe7902;
+    border: 1px solid #fe7902;
+    outline: none;
+    cursor: pointer;
+    padding: .6em 1em;
+    -webkit-appearance: none;
+    width:95%;
+    height:6%!important;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    margin-top: 2em;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+   text-decoration:none;
+   position:relative;
+   height:36px;
+   bottom:27px;
+ }
+ .modifier:hover {
+        width:95%!important;
+        height:6%!important;
+        background: transparent;
+        color: #fff!important;
+         border: 1px solid #fe7902;
+    }

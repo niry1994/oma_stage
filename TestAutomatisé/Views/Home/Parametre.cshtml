@@ -1,0 +1,199 @@
+﻿@model TestAutomatisé.DomaineClasses.Personne
+
+@{
+    ViewBag.Title = "Parametre";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="main">
+    <br>
+    <div id="navigation" style="display:none;" class="w3_agile">
+        <ul>
+            <li class="selected">
+                <a href="#"><i class="fa fa-home" aria-hidden="true"></i><span>Profil</span></a>
+            </li>
+        </ul>
+    </div>
+    <div id="wrapper" class="w3ls_wrapper w3layouts_wrapper">
+        <div id="steps" style="margin:0 auto;" class="agileits w3_steps">
+@using (Html.BeginForm("Parametre","Home",new { enctype="multipart/form-data",onSubmit="return jQueryAjaxPost(this);"}))
+{           
+            <div  class="w3_form w3l_form_fancy">
+                <fieldset class="step agileinfo w3ls_fancy_step">
+                    <legend>Modifier le profil</legend>
+                    <div class="abt-agile">
+                        <div class="abt-agile-left">
+                            <label class="upload1" id="btnupload" onclick="document.getElementById('imageBrowes').click()" style="position:absolute ;top:160px;height:4%!important ;width:220px;right:420px">
+                                <i class="fa fa-upload"></i>
+                                 Parcourir...
+                            </label>                           
+                            <input type="file" class="file1" id="imageBrowes" style="display:none;position:absolute;">
+                            <br>
+                            <hr/>
+                            <div id="imgPreview" class="w3layouts_wrapper">
+                                <img class="img-responsive" id="targetImg" />
+                                @*<div class="caption">
+                                    <a href="#" onclick="ClearPreview()"><i class="glyphicon glyphicon-trash"></i></a>
+                                    <span id="description"></span>
+                                </div>*@
+                            </div>
+                           
+                        </div>
+                        
+                        <div class="abt-agile-right">
+
+                           @Html.EditorFor(model => model.NomPersonne, new { htmlAttributes = new { @class = "bord", @placeholder = "Nom et Prénom", @style = "width:100%; Margin:20px;  position:relative!important;left:18px" } })
+                            <h5>Devellopeurs</h5>
+                            <ul class="address">
+
+                                <li>
+                                    <ul class="address-text">
+                                        @Html.EditorFor(model => model.Trigramme, new { htmlAttributes = new { @class = "bord", @placeholder = "Trigramme", @style = "width:100%; Margin:20px;  position:relative!important;left:18px" } })
+                                    </ul>
+                                </li>
+                                <li>
+                                    <ul>
+                                        @Html.EditorFor(model => model.ContactPersonne , new { htmlAttributes = new { @class = "bord", @placeholder = "Contact", @style = "width:100%; Margin:20px;  position:relative!important;left:18px" } })
+                                    </ul>
+                                </li>
+                                <li>
+                                    <ul class="address-text">
+                                        @Html.EditorFor(model => model.EmailPersonne, new { htmlAttributes = new { @class = "bord", @placeholder = "Email", @style = "width:100%; Margin:20px;  position:relative!important;left:18px" } })
+                                    </ul>
+                                </li>
+                                <li>
+                                    <ul class="address-text">
+                                        @Html.EditorFor(model => model.AdressePersonne, new { htmlAttributes = new { @class = "bord", @placeholder = "Adresse", @style = "width:100%; Margin:20px;  position:relative!important;left:18px" } })
+                                    </ul>
+                                </li>
+                                <li>
+                                    <ul class="address-text">
+                                        @Html.PasswordFor(model => model.Mdp, new { @class = "bord", @placeholder = " Votre Mot de Passe", @style = "Margin:10px 40px;   position:relative;", @id = "password1" })
+                                    </ul>
+                                </li>
+                                <li>
+                                    <ul class="address-text">
+                                       
+                                        @Html.PasswordFor(model => model.Mdp, new { @class = "bord", @placeholder = "Confirme votre Mot de Passe", @style = "Margin:10px 40px;   position:relative;", @id = "password2" })
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="clear"></div>
+                       
+                        <button class="modifier w3-button w3-hover-none" style="Margin:60px 40px 0 40px; right:30px; position:relative!important;">Confirmer modification</button>
+                    </div>
+                </fieldset>               
+            </div>
+}
+        </div>
+    </div>
+
+</div>
+
+<script src="~/Scr ipts/jquery-1.10.2.min.js"></script>
+<script>
+   
+        $(document).ready(function () {
+            $("#imageBrowes").change(function () {
+                var File = this.files;
+
+                if (File && File[0]) {
+                    ReadImage(File[0]);
+
+                }
+
+
+            })
+
+        })
+      
+
+
+    var ReadImage = function (file) {
+        var reader = new FileReader;
+        var image = new Image;
+
+        reader.readAsDataURL(file);
+        reader.onload = function (_file) {
+            image.src = _file.target.result;
+            image.onload = function () {
+               
+                var height = this.height;
+                var width = this.width;
+                var type = file.type;
+                var size = ~~(file.size / 1024) + "Kb";
+
+                $("#targetImg").attr('src', _file.target.result);
+
+                $("#description").text("size" + size + ", " + height + "x" + width);
+                $("#imgPreview").show();
+            }
+
+        }     
+    }
+    var ClearPreview = function () {
+        $("#imageBrowes").val('');
+        $("#description").text('');
+        $("#imgPreview").hide();
+    }
+
+    window.onload = function () {
+        document.getElementById("password1").onchange = validatePassword;
+        document.getElementById("password2").onchange = validatePassword;
+    }
+    function validatePassword() {
+        var pass2 = document.getElementById("password2").value;
+        var pass1 = document.getElementById("password1").value;
+        if (pass1 != pass2)
+            document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+        else
+            document.getElementById("password2").setCustomValidity('');
+        //empty string means no validation error
+    }
+
+
+</script>
+<style>
+
+
+
+
+   .upload1{
+    
+    text-decoration:none!important;
+    font-size: 1em;
+    color: #fff;
+    background: #fe7902;
+    border: 1px solid #fe7902;
+    outline: none;
+    cursor: pointer;
+    padding: .6em 1em;
+    -webkit-appearance: none;
+    width:95%;
+    height:6%!important;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    margin-top: 2em;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+   text-decoration:none;
+   position:relative;
+   height:36px;
+   bottom:27px;
+ }
+ .upload1:hover {
+        width:220px!important;
+        height:6%!important;
+        background: transparent;
+        color: #fff!important;
+         border: 1px solid #fe7902;
+    }
+</style>

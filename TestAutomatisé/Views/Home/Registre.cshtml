@@ -1,0 +1,236 @@
+﻿@model TestAutomatisé.DomaineClasses.Personne
+
+@{
+    ViewBag.Title = "Parametre";
+    Layout = "~/Views/Shared/_LayoutAcceuil.cshtml";
+}
+
+<link href="~/Content/Style2.css" rel="stylesheet" />
+<div class="main animated pulse" >
+    <div id="wrapper" class="w3ls_wrapper w3layouts_wrapper">
+
+        <div class="w3_form w3l_form_fancy">
+            <fieldset>
+                <a href="~/Home/login" style="text-decoration:none;position:absolute; right:20px" onclick="this.parentElement.style.display='none'"
+                   class="w3-bar-item w3-button w3-xxlarge w3-transparent w3-text-white w3-display-topright w3-hover-none">&times;</a>
+                <legend class="legend1">S'inscrire</legend>
+                <hr />
+                @using (Html.BeginForm("Registre", "Home",FormMethod.Post,new { enctype = "multipart/form-data" }))
+                {
+                    <div class="abt-agile">
+
+                        <div class="abt-agile-left" asp-action="RegistreS" asp-controller="Home">
+                            <label class="upload1" id="btnupload" onclick="document.getElementById('imageBrowes').click()" style="position:absolute ;top:105px;height:5%!important ;width:220px;right:430px">
+                                <i class="fa fa-upload"></i>
+                                Parcourir...
+                            </label>
+                            @Html.TextBox("file", "", new { @class = "form-control", @placeholder = "Photo *", @type = "file", @id = "imageBrowes", @style = "display:none;" })
+                            @*<input type="file" class="file1" id="imageBrowes" style="display:none;position:absolute;">*@
+                            <br>
+                            <hr />
+                            <div id="imgPreview" class="w3layouts_wrapper" style="position:relative;left:10px!important">
+                                <img class="img-responsive" id="targetImg"  style="position:relative;left:10px!important"/>
+                                @*<div class="caption">
+                                        <a href="#" onclick="ClearPreview()"><i class="glyphicon glyphicon-trash"></i></a>
+                                        <span id="description"></span>
+                                    </div>*@
+                            </div>
+
+                        </div>
+
+                        <div class="abt-agile-right">
+
+                            @Html.EditorFor(model => model.NomPersonne, new { htmlAttributes = new { @class = "bord1", @placeholder = " Nom et Prénom" } })
+
+                            @Html.EditorFor(model => model.Trigramme, new { htmlAttributes = new { @class = "bord1", @placeholder = " Trigramme" } })
+
+                            @Html.EditorFor(model => model.ContactPersonne, new { htmlAttributes = new { @class = "bord1", @placeholder = " Contact"} })
+
+                            @Html.EditorFor(model => model.EmailPersonne, new { htmlAttributes = new { @class = "bord1", @placeholder = " Email"} })
+
+                            @Html.EditorFor(model => model.AdressePersonne, new { htmlAttributes = new { @class = "bord1", @placeholder = " Adresse" } })
+
+                            @Html.PasswordFor(model => model.Mdp, new { @class = "bord1", @placeholder = " Votre Mot de Passe",@id= " password1" })
+
+
+                            @*@Html.PasswordFor(model => model.Mdp, new { @class = "bord1", @placeholder = "Confirme votre Mot de Passe", @id = "password2" })*@
+                            <input type="password" class="bord1" placeholder="Confirmer votre mot de passe" id="password2">
+
+                        </div>
+
+
+                        <button class="modifier w3-button w3-hover-none" style="Margin:60px 40px 0 40px; right:30px; position:relative!important;">Confirmer modification</button>
+                    </div>
+                }
+            </fieldset>
+        </div>
+    </div>
+</div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script>
+
+
+
+        $(document).ready(function () {
+            $("#imageBrowes").change(function () {
+                var File = this.files;
+
+                if (File && File[0]) {
+                    ReadImage(File[0]);
+
+                }
+
+
+            })
+
+        })
+
+
+
+    var ReadImage = function (file) {
+        var reader = new FileReader;
+        var image = new Image;
+
+        reader.readAsDataURL(file);
+        reader.onload = function (_file) {
+            image.src = _file.target.result;
+            image.onload = function () {
+
+                var height = this.height;
+                var width = this.width;
+                var type = file.type;
+                var size = ~~(file.size / 1024) + "Kb";
+
+                $("#targetImg").attr('src', _file.target.result);
+
+                $("#description").text("size" + size + ", " + height + "x" + width);
+                $("#imgPreview").show();
+            }
+
+        }
+    }
+    var ClearPreview = function () {
+        $("#imageBrowes").val('');
+        $("#description").text('');
+        $("#imgPreview").hide();
+    }
+
+    window.onload = function () {
+        document.getElementById("password1").onchange = validatePassword;
+        document.getElementById("password2").onchange = validatePassword;
+    }
+    function validatePassword() {
+        var pass2 = document.getElementById("password2").value;
+        var pass1 = document.getElementById("password1").value;
+        if (pass1 != pass2)
+            document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+        else
+            document.getElementById("password2").setCustomValidity('');
+        //empty string means no validation error
+    }
+
+		$(document).ready(function () {
+
+		    $("#btnSubmit").click(function () {
+
+		        debugger
+		        //$("#LoaderSubmit").show();
+		        var data = $("#myForm").serialize();
+
+		        $.ajax({
+
+		            type: "POST",
+		            url: "/Home/Registre",
+		            data: data,
+		            success: function (response) {
+		                //$("#LoaderSubmit").show();
+		                alert("bien enregistrer");
+
+		            }
+
+		        })
+
+		    })
+		})
+    </script>
+    <style>
+        .upload1 {
+            padding:10px;
+            margin:5px;
+            text-decoration: none !important;
+            font-size: 1em;
+            color: #fff!important;
+            text-align: center;
+            background: #fe7902;
+            border: 1px solid #fe7902;
+            outline: none;
+            cursor: pointer;
+            padding: .6em 1em;
+            -webkit-appearance: none;
+            width: 95%;
+            height: 6% !important;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            -ms-border-radius: 2px;
+            -o-border-radius: 2px;
+            border-radius: 2px;
+            margin-top: 2em;
+            transition: 0.5s all;
+            -webkit-transition: 0.5s all;
+            -moz-transition: 0.5s all;
+            -o-transition: 0.5s all;
+            -ms-transition: 0.5s all;
+            text-decoration: none;
+            position: relative;
+            height: 36px;
+            bottom: 27px;
+        }
+       
+            .upload1:hover {
+                width: 220px !important;
+                height: 6% !important;
+                background: transparent;
+                color: #fff !important;
+                border: 1px solid #fe7902;
+            }
+
+        .bord1:focus {
+            border: 1px solid #fe7902 !important;
+            outline: none;
+            -webkit-appearance: none;
+            color: #ffffff;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            -ms-border-radius: 2px;
+            -o-border-radius: 2px;
+            border-radius: 2px;
+        }
+
+        .bord1 {
+            background-color: transparent;
+            border: 1px solid #fff !important;
+            outline: none;
+            color:#fff;
+            margin: 10px;
+            width: 100% !important;
+            height: 30px !important;
+            -webkit-appearance: none;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            -ms-border-radius: 2px;
+            -o-border-radius: 2px;
+            border-radius: 2px;
+        }
+
+         ::-webkit-input-placeholder{
+            color:#fff;
+            font-size:15px;
+            padding:4px;
+        }
+        ::-moz-placeholder{
+            color:#fff;
+             font-size:15px;
+            padding:4px;
+        }
+    </style>

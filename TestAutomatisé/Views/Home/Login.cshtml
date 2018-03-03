@@ -1,0 +1,101 @@
+﻿@model TestAutomatisé.DomaineClasses.Personne
+@{
+    ViewBag.Title = "Login";
+
+}
+
+
+<div class="main" style="background:none;">
+    <div class="main-w3lsrow animated pulse ">
+        <a href="~/Home/Start" style="text-decoration:none; right:20px" onclick="this.parentElement.style.display='none'"
+           class="w3-bar-item w3-button w3-xxlarge w3-transparent w3-text-white w3-display-topright w3-hover-none">&times;</a>
+        <!-- login form -->
+        <div class="login-form login-form-left">
+           
+            <div class="agile-row">
+                
+                <h2>Connexion</h2>
+
+                <div class="login-agileits-top">
+                    
+                   @using (Html.BeginForm()) {
+
+                           @Html.EditorFor(model => model.Trigramme, new { htmlAttributes = new { @class = "bord", @placeholder = "Trigramme", @style = "width:100%; Margin:20px;  position:relative!important;left:18px" } })
+                           @*@Html.ValidationMessageFor(model => model.Trigramme, "veuillez remplir Trigramme", new { @class = "text-danger" })*@
+    
+
+                        @Html.PasswordFor(model => model.Mdp, new { @class = "bord", @placeholder = "Mot de Passe", @style = "width:100%!important;  Margin:20px; position:relative!important;left:18px" })
+
+                        <button class="connecter w3-button w3-hover-none" style="Margin:50px 40px 0 40px; position:relative!important;">Login</button>
+
+                         <a type="submit" href="~/home/Registre" class="w3-button w3-hover-none inscrire" style="position:relative!important; width:80%!important; ">S'inscrire</a>
+                       }
+
+
+                   
+                </div>
+                <div class="login-agileits-bottom">
+                    <h6><a href="#" style="text-decoration:none;">Forgot password?</a></h6>
+                </div>
+                <div class="login-agileits-bottom1">
+                    <h3>(or)</h3>
+
+                </div>
+              
+                <div class="social_icons agileinfo">
+
+                    <ul class="top-links">
+                        <li><a href="https://www.facebook.com"  target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://www.twitter.com"  target="_blank"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://www.linkedin.com"  target="_blank" ><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="https://www.google_plus.com" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    //function welcome() {
+    //    window.open("/Home/Welcome", "_self");
+    //    Layout = null;
+
+    //}
+    //var LoginUser = function () {
+    //    debugger
+    //    var data = $("#MyForm").serialize();
+
+    //    $.ajax({
+    //        url:"/Home/LoginUser",
+    //        data: data,
+    //        success: function (response) {
+
+    //            if (response=="fail") {
+    //                Window.location.href = "/Home/Login";
+    //                alert("Erreur Mot de Passe!")
+    //            }
+    //        else
+    //            if (response == "Success") {
+
+    //                Window.location.href = "/Home/Welcome";
+    //            }
+    //        }
+
+
+    //    })
+
+    //}
+</script>
+<style>
+     ::-webkit-input-placeholder{
+            color:#fff;
+            font-size:15px;
+            padding:4px;
+        }
+        ::-moz-placeholder{
+            color:#fff;
+             font-size:15px;
+            padding:4px;
+        }
+</style>

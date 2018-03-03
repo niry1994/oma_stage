@@ -1,0 +1,395 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FluentDb</name>
+    </assembly>
+    <members>
+        <member name="T:FluentDb.DataReaderExtension">
+            <summary>
+            Расширение для IDataReader
+            </summary>
+        </member>
+        <member name="M:FluentDb.DataReaderExtension.AsEnumerable(System.Data.IDataReader)">
+            <summary>
+            Вернуть как перечислимое
+            </summary>
+            <param name="reader">считыватель</param>
+            <returns>перечислимое</returns>
+        </member>
+        <member name="M:FluentDb.DataReaderExtension.AsEnumerable``1(System.Data.IDataReader,System.Func{System.Data.IDataRecord,``0})">
+            <summary>
+            Вернуть как перечислимое
+            </summary>
+            <typeparam name="T">тип возвращаемого элемента</typeparam>
+            <param name="reader">считыватель</param>
+            <param name="map">преобразователь</param>
+            <returns>перечислимое</returns>
+        </member>
+        <member name="M:FluentDb.DataReaderExtension.AsEnumerable``1(System.Data.IDataReader)">
+            <summary>
+            Вернуть как перечислимое
+            </summary>
+            <typeparam name="T">тип возвращаемого элемента</typeparam>
+            <param name="reader">считыватель</param>
+            <returns>перечислимое</returns>
+        </member>
+        <member name="T:FluentDb.DbCommandExtension">
+            <summary>
+            методы расширяющие DbCommand
+            </summary>
+            <summary>
+            методы расширяющие DbCommand
+            </summary>
+            <summary>
+            методы расширяющие DbCommand
+            </summary>
+            <summary>
+            методы расширяющие DbCommand
+            </summary>
+        </member>
+        <member name="M:FluentDb.DbCommandExtension.SetCommandText(System.Data.Common.DbCommand,System.String)">
+            <summary>
+            Установить текст команды
+            </summary>
+            <param name="cmd"></param>
+            <param name="commandText"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentDb.DbCommandExtension.SetCommandType(System.Data.Common.DbCommand,System.Data.CommandType)">
+            <summary>
+            Установить тип команды
+            </summary>
+            <param name="cmd"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentDb.DbCommandExtension.SetCommandTimeout(System.Data.Common.DbCommand,System.TimeSpan)">
+            <summary>
+            Установить таймаут команды
+            </summary>
+            <param name="cmd"></param>
+            <param name="timeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentDb.DbCommandExtension.AsEnumerable(System.Data.Common.DbCommand,System.Data.CommandBehavior)">
+            <summary>
+            Исполняет запрос и возвращает итератор с записями
+            </summary>
+            <param name="cmd"></param>
+            <param name="behavior"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentDb.DbCommandExtension.AsEnumerable``1(System.Data.Common.DbCommand,System.Func{System.Data.IDataRecord,``0},System.Data.CommandBehavior)">
+            <summary>
+            Исполняет запрос и возвращает итератор с записями
+            </summary>
+            <param name="cmd"></param>
+            <param name="map"></param>
+            <param name="behavior"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentDb.DbCommandExtension.AsEnumerable``1(System.Data.Common.DbCommand,System.Data.CommandBehavior)">
+            <summary>
+            Исполняет запрос и возвращает итератор с записями
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="cmd"></param>
+            <param name="behavior"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentDb.DbCommandExtension.ExecuteScalarAsync``1(System.Data.Common.DbCommand)">
+            <summary>
+            Исполняет запрос и возвращает значение первой колонки первой строки
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentDb.DbCommandExtension.ExecuteScalar``1(System.Data.Common.DbCommand)">
+            <summary>
+            Исполняет запрос и возвращает значение первой колонки первой строки
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentDb.DbCommandExtension.AddParameter(System.Data.Common.DbCommand,System.Action{System.Data.Common.DbParameter})">
+            <summary>
+            Добавить параметр
+            </summary>
+            <param name="cmd"></param>
+            <param name="init"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentDb.DbCommandExtension.AddParameter(System.Data.Common.DbCommand,System.String,System.Object)">
+            <summary>
+            Добавить параметр
+            </summary>
+            <param name="cmd"></param>
+            <param name="name"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentDb.DbCommandExtension.AddParameters(System.Data.Common.DbCommand,System.Object)">
+            <summary>
+            Добавить параметры из мешка
+            </summary>
+            <param name="cmd"></param>
+            <param name="bag"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FluentDb.DbConnectionExtension">
+            <summary>
+            Методы расширяющие DbConnection
+            </summary>
+            <summary>
+            методы расширяющие DbConnection
+            </summary>
+            <summary>
+            Методы расширяющие DbConnection
+            </summary>
+            <summary>
+            Методы расширяющие DbConnection
+            </summary>
+        </member>
+        <member name="M:FluentDb.DbConnectionExtension.Connect(System.Data.Common.DbConnection)">
+            <summary>
+            Открыть соединение
+            </summary>
+            <param name="connection">соединение</param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentDb.DbConnectionExtension.ExecuteNonQuery(System.Data.Common.DbConnection,System.Action{System.Data.Common.DbCommand})">
+            <summary>
+            Выполнить команду
+            </summary>
+            <param name="con"></param>
+            <param name="init"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentDb.DbConnectionExtension.ExecuteNonQuery(System.Data.Common.DbConnection,System.String)">
+            <summary>
+            Выполнить запрос
+            </summary>
+            <param name="con"></param>
+            <param name="cmdText"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentDb.DbConnectionExtension.ExecuteNonQuery(System.Data.Common.DbConnection,System.String,System.Object)">
+            <summary>
+            Выполнить запрос
+            </summary>
+            <param name="con"></param>
+            <param name="cmdText"></param>
+            <param name="bag"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentDb.DbConnectionExtension.AsEnumerable(System.Data.Common.DbConnection,System.Action{System.Data.Common.DbCommand},System.Data.CommandBehavior)">
+            <summary>
+            Исполняет запрос и возвращает итератор с записями
+            </summary>
+            <param name="connection">соединение с БД</param>
+            <param name="init">инициализация команды</param>
+            <param name="behavior">поведение</param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentDb.DbConnectionExtension.AsEnumerable``1(System.Data.Common.DbConnection,System.Action{System.Data.Common.DbCommand},System.Func{System.Data.IDataRecord,``0},System.Data.CommandBehavior)">
+            <summary>
+            Исполняет запрос и возвращает итератор с записями
+            </summary>
+            <typeparam name="T">Тип возвращаемого значения</typeparam>
+            <param name="connection">соединение с БД</param>
+            <param name="init">инициализация команды</param>
+            <param name="map">преобразование</param>
+            <param name="behavior">поведение</param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentDb.DbConnectionExtension.AsEnumerable``1(System.Data.Common.DbConnection,System.Action{System.Data.Common.DbCommand},System.Data.CommandBehavior)">
+            <summary>
+            Исполняет запрос и возвращает итератор с записями
+            </summary>
+            <typeparam name="T">Тип возвращаемого значения</typeparam>
+            <param name="connection">соединение с БД</param>
+            <param name="init">инициализация команды</param>
+            <param name="behavior">поведение</param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentDb.DbConnectionExtension.AsEnumerable(System.Data.Common.DbConnection,System.String,System.Data.CommandBehavior)">
+            <summary>
+            Исполняет запрос и возвращает итератор с записями
+            </summary>
+            <param name="connection">соединение с БД</param>
+            <param name="commandText">текст команды</param>
+            <param name="behavior">поведение</param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentDb.DbConnectionExtension.AsEnumerable``1(System.Data.Common.DbConnection,System.String,System.Func{System.Data.IDataRecord,``0},System.Data.CommandBehavior)">
+            <summary>
+            Исполняет запрос и возвращает итератор с записями
+            </summary>
+            <typeparam name="T">Тип возвращаемого значения</typeparam>
+            <param name="connection">Соединение с БД</param>
+            <param name="commandText">текст команды</param>
+            <param name="map">преобразование</param>
+            <param name="behavior">поведение</param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentDb.DbConnectionExtension.AsEnumerable``1(System.Data.Common.DbConnection,System.String,System.Data.CommandBehavior)">
+            <summary>
+            Исполняет запрос и возвращает итератор с записями
+            </summary>
+            <typeparam name="T">Тип возвращаемого значения</typeparam>
+            <param name="connection">Соединение с БД</param>
+            <param name="commandText">текст команды</param>
+            <param name="behavior">поведение</param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentDb.DbConnectionExtension.AsEnumerable(System.Data.Common.DbConnection,System.String,System.Object,System.Data.CommandBehavior)">
+            <summary>
+            Исполняет запрос и возвращает итератор с записями
+            </summary>
+            <param name="connection">соединение с БД</param>
+            <param name="commandText">текст команды</param>
+            <param name="bag">мешок с параметрами</param>
+            <param name="behavior">поведение</param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentDb.DbConnectionExtension.AsEnumerable``1(System.Data.Common.DbConnection,System.String,System.Object,System.Func{System.Data.IDataRecord,``0},System.Data.CommandBehavior)">
+            <summary>
+            Исполняет запрос и возвращает итератор с записями
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="connection">соединение с БД</param>
+            <param name="commandText">текст комнады</param>
+            <param name="bag">мешок с параметрами</param>
+            <param name="map">преобразование</param>
+            <param name="behavior">поведение</param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentDb.DbConnectionExtension.AsEnumerable``1(System.Data.Common.DbConnection,System.String,System.Object,System.Data.CommandBehavior)">
+            <summary>
+            Исполняет запрос и возвращает итератор с записями
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="connection">соединение с БД</param>
+            <param name="commandText">текст комнады</param>
+            <param name="bag">мешок с параметрами</param>
+            <param name="behavior">поведение</param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentDb.DbConnectionExtension.ExecuteScalar``1(System.Data.Common.DbConnection,System.Action{System.Data.Common.DbCommand})">
+            <summary>
+            Исполнить команду для получения скалярного значения
+            </summary>
+            <typeparam name="T">тип возвращаемого значения</typeparam>
+            <param name="connection">соединение с БД</param>
+            <param name="init">инициализация команды</param>
+            <returns>скалярное значение</returns>
+        </member>
+        <member name="M:FluentDb.DbConnectionExtension.ExecuteScalar``1(System.Data.Common.DbConnection,System.String)">
+            <summary>
+            Исполнить команду для получения скалярного значения
+            </summary>
+            <typeparam name="T">Тип возвращаемого значения</typeparam>
+            <param name="connection">соединение с БД</param>
+            <param name="commandText">текст команды</param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentDb.DbConnectionExtension.ExecuteScalar``1(System.Data.Common.DbConnection,System.String,System.Object)">
+            <summary>
+            Исполнить команду для получения скалярного значения
+            </summary>
+            <typeparam name="T">Тип возвращаемого значения</typeparam>
+            <param name="connection">соединение с БД</param>
+            <param name="commandText">текст команды</param>
+            <param name="bag">мешок с параметрами</param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentDb.DbConnectionExtension.ExecuteScalarAsync``1(System.Data.Common.DbConnection,System.Action{System.Data.Common.DbCommand})">
+            <summary>
+            Исполнить команду для получения скалярного значения
+            </summary>
+            <typeparam name="T">тип возвращаемого значения</typeparam>
+            <param name="connection">соединение с БД</param>
+            <param name="init">инициализация команды</param>
+            <returns>скалярное значение</returns>
+        </member>
+        <member name="M:FluentDb.DbConnectionExtension.ExecuteScalarAsync``1(System.Data.Common.DbConnection,System.String)">
+            <summary>
+            Исполнить команду для получения скалярного значения
+            </summary>
+            <typeparam name="T">Тип возвращаемого значения</typeparam>
+            <param name="connection">соединение с БД</param>
+            <param name="commandText">текст команды</param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentDb.DbConnectionExtension.ExecuteScalarAsync``1(System.Data.Common.DbConnection,System.String,System.Object)">
+            <summary>
+            Исполнить команду для получения скалярного значения
+            </summary>
+            <typeparam name="T">Тип возвращаемого значения</typeparam>
+            <param name="connection">соединение с БД</param>
+            <param name="commandText">текст команды</param>
+            <param name="bag">мешок с параметрами</param>
+            <returns></returns>
+        </member>
+        <member name="T:FluentDb.DbParameterExtension">
+            <summary>
+            Методы расширяющие DbParameter
+            </summary>
+        </member>
+        <member name="M:FluentDb.DbParameterExtension.SetName(System.Data.Common.DbParameter,System.String)">
+            <summary>
+            Установаить имя параметра
+            </summary>
+            <param name="parameter"></param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentDb.DbParameterExtension.SetValue(System.Data.Common.DbParameter,System.Object)">
+            <summary>
+            Установить значение параметра
+            </summary>
+            <param name="parameter"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentDb.DbParameterExtension.SetDbType(System.Data.Common.DbParameter,System.Data.DbType)">
+            <summary>
+            Установить значение параметра
+            </summary>
+            <param name="parameter"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentDb.DbParameterExtension.SetDirection(System.Data.Common.DbParameter,System.Data.ParameterDirection)">
+            <summary>
+            Установить направление параметра
+            </summary>
+            <param name="parameter"></param>
+            <param name="direction"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentDb.DbParameterExtension.SetSize(System.Data.Common.DbParameter,System.Int32)">
+            <summary>
+            Установить размер значения параметра
+            </summary>
+            <param name="parameter"></param>
+            <param name="size"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FluentDb.EnumerableExtension">
+            <summary>
+            методы расширяющие Enumerable
+            </summary>
+        </member>
+        <member name="M:FluentDb.EnumerableExtension.AsDataReader``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Вернуть как считыватель
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

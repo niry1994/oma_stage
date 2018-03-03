@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FluentDb.Sql</name>
+    </assembly>
+    <members>
+        <member name="T:FluentDb.DbParameterExtension">
+            <summary>
+            Методы расширяющие DbParameter
+            </summary>
+        </member>
+        <member name="M:FluentDb.DbParameterExtension.AsSql(System.Data.Common.DbParameter,System.Action{System.Data.SqlClient.SqlParameter})">
+            <summary>
+            Использовать как SQl параметр
+            </summary>
+            <param name="parameter"></param>
+            <param name="init"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FluentDb.SqlParameterExtension">
+            <summary>
+            Методы расширяющий SqlParameter
+            </summary>
+        </member>
+        <member name="M:FluentDb.SqlParameterExtension.AsTvp(System.Data.SqlClient.SqlParameter,System.String,System.Data.DataTable)">
+            <summary>
+            Использовать как Table-Value параметр
+            </summary>
+            <param name="parameter"></param>
+            <param name="typeName"></param>
+            <param name="dataTable"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentDb.SqlParameterExtension.AsTvp(System.Data.SqlClient.SqlParameter,System.String,System.Data.Common.DbDataReader)">
+            <summary>
+            Использовать как Table-Value параметр
+            </summary>
+            <param name="parameter"></param>
+            <param name="typeName"></param>
+            <param name="reader"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FluentDb.SqlParameterExtension.AsTvp(System.Data.SqlClient.SqlParameter,System.String,System.Collections.Generic.IEnumerable{Microsoft.SqlServer.Server.SqlDataRecord})">
+            <summary>
+            Использовать как Table-Value параметр
+            </summary>
+            <param name="parameter"></param>
+            <param name="typeName"></param>
+            <param name="records"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

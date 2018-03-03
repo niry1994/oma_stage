@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DotNetStarter.RegistrationAbstractions</name>
+    </assembly>
+    <members>
+        <member name="T:DotNetStarter.Abstractions.DiscoverableAssemblyAttribute">
+            <summary>
+            When assigned to assemblies, libraries such as DotNetStarter can use it for easier assembly filtering.
+            </summary>
+        </member>
+        <member name="T:DotNetStarter.Abstractions.DiscoverTypesAttribute">
+            <summary>
+            Discover implementations/usages of these types in an assembly scanning process
+            </summary>
+        </member>
+        <member name="P:DotNetStarter.Abstractions.DiscoverTypesAttribute.DiscoverTypes">
+            <summary>
+            Types to discover.
+            </summary>
+        </member>
+        <member name="M:DotNetStarter.Abstractions.DiscoverTypesAttribute.#ctor(System.Type[])">
+            <summary>
+            Constructor
+            </summary>
+            <param name="discoverType">Types to discover for their implementation/usage.</param>
+        </member>
+        <member name="T:DotNetStarter.Abstractions.ExportsAttribute">
+            <summary>
+            Allows an assembly to choose how its types are discovered
+            </summary>
+        </member>
+        <member name="P:DotNetStarter.Abstractions.ExportsAttribute.ExportsType">
+            <summary>
+            Exports type
+            </summary>
+        </member>
+        <member name="P:DotNetStarter.Abstractions.ExportsAttribute.Exports">
+            <summary>
+            Specific exports
+            </summary>
+        </member>
+        <member name="M:DotNetStarter.Abstractions.ExportsAttribute.#ctor(DotNetStarter.Abstractions.ExportsType)">
+            <summary>
+            Constructor for All and Exports only
+            </summary>
+            <param name="exportsType"></param>
+        </member>
+        <member name="M:DotNetStarter.Abstractions.ExportsAttribute.#ctor(System.Type[])">
+            <summary>
+            Constructor for specific exports
+            </summary>
+            <param name="specificExports"></param>
+        </member>
+        <member name="T:DotNetStarter.Abstractions.ExportsType">
+            <summary>
+            Defines how assembly scanning finds types for scanned assembly, if Assembly attribute doesn't exist, All is assumed.
+            </summary>
+        </member>
+        <member name="F:DotNetStarter.Abstractions.ExportsType.All">
+            <summary>
+            Equals Assembly.GetTypes for assembly scanning
+            </summary>
+        </member>
+        <member name="F:DotNetStarter.Abstractions.ExportsType.ExportsOnly">
+            <summary>
+            Equals Assembly.GetExportedTypes for assembly scanning
+            </summary>
+        </member>
+        <member name="F:DotNetStarter.Abstractions.ExportsType.Specfic">
+            <summary>
+            Manually defined type exports
+            </summary>
+        </member>
+        <member name="T:DotNetStarter.Abstractions.Lifecycle">
+            <summary>
+            Object lifecycles
+            </summary>
+        </member>
+        <member name="F:DotNetStarter.Abstractions.Lifecycle.Transient">
+            <summary>
+            New instances
+            </summary>
+        </member>
+        <member name="F:DotNetStarter.Abstractions.Lifecycle.Singleton">
+            <summary>
+            Single instance per application
+            </summary>
+        </member>
+        <member name="F:DotNetStarter.Abstractions.Lifecycle.Scoped">
+            <summary>
+            Single instance per scope
+            </summary>
+        </member>
+        <member name="T:DotNetStarter.Abstractions.RegistrationAttribute">
+            <summary>
+            Provides simple object registration for any consumer
+            </summary>
+            <remarks>
+            Important: DotNetStarter will not support dependencies until version 2.
+            </remarks>
+        </member>
+        <member name="M:DotNetStarter.Abstractions.RegistrationAttribute.#ctor(System.Type,DotNetStarter.Abstractions.Lifecycle,System.Type[])">
+            <summary>
+            Constructor
+            </summary>
+            <param name="serviceType"></param>
+            <param name="lifecycle"></param>
+            <param name="dependencies"></param>
+        </member>
+        <member name="P:DotNetStarter.Abstractions.RegistrationAttribute.Lifecycle">
+            <summary>
+            Object lifecycle
+            </summary>
+        </member>
+        <member name="P:DotNetStarter.Abstractions.RegistrationAttribute.ServiceType">
+            <summary>
+            Type of service to register
+            </summary>
+        </member>
+        <member name="T:DotNetStarter.Abstractions.StartupAssemblyDependencyBaseAttribute">
+            <summary>
+            Sort Assemblies, the attribute requires you to use a type in the dependent assembly
+            </summary>
+        </member>
+        <member name="M:DotNetStarter.Abstractions.StartupAssemblyDependencyBaseAttribute.#ctor(System.Type[])">
+            <summary>
+            Constructor
+            </summary>
+            <param name="dependencies"></param>
+        </member>
+        <member name="T:DotNetStarter.Abstractions.StartupDependencyBaseAttribute">
+            <summary>
+            All dependency sorts derive from this and remember to create a constructor to pass dependencies
+            <para>This base class supports Type sorting, but not Assembly</para>
+            </summary>
+        </member>
+        <member name="P:DotNetStarter.Abstractions.StartupDependencyBaseAttribute.Dependencies">
+            <summary>
+            Dependent types
+            </summary>
+        </member>
+        <member name="P:DotNetStarter.Abstractions.StartupDependencyBaseAttribute.IsAssemblyDependency">
+            <summary>
+            Determines if dependencies are assemblies and not types
+            </summary>
+        </member>
+        <member name="M:DotNetStarter.Abstractions.StartupDependencyBaseAttribute.#ctor(System.Type[])">
+            <summary>
+            Constructor
+            </summary>
+            <param name="dependencies"></param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,210 @@
+﻿@model TestAutomatisé.DomaineClasses.Personne
+
+@{
+    ViewBag.Title = "Orange Madagascar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/animate.css" rel="stylesheet" />
+<div class="main animated pulse" >
+    <br>
+    <a href="~/Home/welcome/@Model.PersonneId" style="text-decoration:none;position:absolute; right:20px" onclick="this.parentElement.style.display='none'"
+       class="w3-bar-item w3-button w3-xxlarge w3-transparent w3-text-white w3-display-topright w3-hover-none">&times;</a>
+    <div id="navigation" style="display:none;" class="w3_agile">
+        <ul>
+            <li class="selected">
+                <a href="#"><i class="fa fa-home" aria-hidden="true"></i><span>Profil</span></a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-folder" aria-hidden="true"></i><span>Photos</span></a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-envelope" aria-hidden="true"></i><span>Messages</span></a>
+            </li>
+        </ul>
+    </div>
+    <div id="wrapper" class="w3ls_wrapper w3layouts_wrapper">
+        <div id="steps" style="margin:0 auto;" class="agileits w3_steps">
+            <form id="formElem" name="formElem" action="#" method="post" class="w3_form w3l_form_fancy">
+                <fieldset class="step agileinfo w3ls_fancy_step">
+                    <legend>A propos</legend>
+                    <div class="abt-agile">
+                        
+                        <div class="abt-agile-left">
+                            @*<input type="file" id="imageBrowes">
+                            <hr/>
+                            <div id="imgPreview" class="thumbnail" style="display:none">
+                                <img class="img-responsive" id="targetImg"/>
+                                <div class="caption">
+                                    <a href="#" onclick="ClearPreview()"><i class="glyphicon glyphicon-trash"></i></a>
+                                    <span id="description"></span>
+                                </div>
+                            </div>*@
+                            
+                            <img src="@Url.Content(Model.UrlPhoto)" alt="Alternate Text"  style="position:relative;left:10px!important; top:20px"/>
+                        </div>
+                       
+                        <div class="abt-agile-right">
+                            <h3>@Model.NomPersonne</h3>
+                            <h5>Devellopeurs</h5>
+                            <ul class="address">
+                               
+                                <li>
+                                    <ul class="address-text">
+                                        <li><b>PHONE </b></li>
+                                        <li>: @Model.ContactPersonne</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <ul class="address-text">
+                                        <li><b>ADDRESSE </b></li>
+                                        <li>:@Model.AdressePersonne</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <ul class="address-text">
+                                        <li><b>E-MAIL </b></li>
+                                        <li><a href="@Model.EmailPersonne">:@Model.EmailPersonne</a></li>
+                                    </ul>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                        <div class="clear"></div>
+                        @*<div><input type="button" href="~/Home/Login.cshtml" class="modifier w3-button w3-hover-none" style="Margin:60px 40px 0 40px; position:relative!important;right:30px;" value="Modifier Profil"></div>*@
+                    </div>
+                </fieldset>
+                <fieldset class="step wthree">
+                    <legend>Photos de profil</legend>
+                    <div class="work-w3agile">
+                        <div class="work-w3agile-top">
+                            <div class="agileits_w3layouts_work_grid1 w3layouts_work_grid1 hover14 column">
+                                <div class="w3_agile_work_effect">
+                                    <ul>
+                                        <li>
+                                            <a href="@Url.Content(Model.UrlPhoto)" class="sb" title="Orange">
+                                                <figure>
+                                                    <img src="@Url.Content(Model.UrlPhoto)" />
+                                                </figure>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="~/Images/orange-telecom.jpg" class="sb" title="Orange">
+                                                <figure>
+
+                                                    <img src="~/Images/orange-telecom.jpg" />
+                                                </figure>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="~/Images/orangeweb-credit-orange-39284.jpg" class="sb" title="Orange" style="width:200px;height:300px;">
+                                                <figure>
+
+                                                    <img src="~/Images/orangeweb-credit-orange-39284.jpg" />
+                                                </figure>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="~/Images/maxresdefault.jpg" class="sb" title="Orange" style="width:200px;height:300px;">
+                                                <figure>
+
+                                                    <img src="~/Images/maxresdefault.jpg" />
+                                                </figure>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="~/Images/24774780_1732644703472778_1239072055662787562_n.jpg" class="sb" title="Orange">
+                                                <figure>
+                                                    <img src="~/Images/24774780_1732644703472778_1239072055662787562_n.jpg" />
+                                                    
+                                                </figure>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="~/Images/wp-image-143934715.jpg" class="sb" title="Orange">
+                                                <figure>
+
+                                                    <img src="~/Images/wp-image-143934715.jpg" />
+                                                </figure>
+                                            </a>
+                                        </li>
+                                        <div class="clear"></div>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="step w3_agileits">
+                    <legend>Contact</legend>
+                    <div class="agilecontactw3ls-grid">
+                        <div class="agile-con-left">
+                            <form action="#" method="post">
+                                <input type="text" name="First Name" placeholder="FIRST NAME" required="">
+                                <input type="email" name="Email" placeholder="EMAIL" required="">
+                                <textarea name="Message" placeholder="MESSAGE" required=""></textarea>
+                                <div class="send-button">
+                                    <button class="send w3-button w3-hover-none" style="Margin:50px 40px 0 40px; position:relative!important; right:20px;">Send</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="agile-con-right">
+                            <h6> @Model.NomPersonne</h6>
+                            <p><span><i class="fa fa-map-marker" aria-hidden="true"></i></span> @Model.AdressePersonne</p>
+                            <p><span><i class="fa fa-envelope" aria-hidden="true"></i></span><a href="#"> @Model.EmailPersonne</a> </p>
+                            <p><span><i class="fa fa-mobile" aria-hidden="true"></i></span> @Model.ContactPersonne </p>
+                            <p><span><i class="fa fa-globe" aria-hidden="true"></i></span><a href="#"> www.Orange.mg</a></p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+  
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    $(document).ready(function()
+    {
+        $("#imageBrowes").change(function()
+        {
+            var File = this.files;
+
+            if (File && File[0]) {
+                ReadImage(File[0]);
+
+            }
+
+        })
+    })
+
+    var ReadImage = function (file) {
+        var reader = new FileReader;
+        var image = new Image;
+
+        reader.readAsDataURL(file);
+        reader.onload = function (_file) {
+            image.src = _file.target.result;
+            image.onload = function () {
+                var height = this.height;
+                var width = this.width;
+                var type = file.type;
+                var size = ~~(file.size / 1024) + "Kb";
+
+                $("#targetImg").attr('src', _file.target.result);
+
+                $("#description").text("size" + size + ", " + height + "x" + width);
+                $("#imgPreview").show();
+            }
+
+        }
+        var ClearPreview = function () {
+
+            $("#imageBrowes").val('');
+            $("#description").text('');
+            $("#imgPreview").hide();
+        }
+    }
+
+</script>

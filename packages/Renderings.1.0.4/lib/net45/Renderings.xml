@@ -1,0 +1,355 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Renderings</name>
+    </assembly>
+    <members>
+        <member name="T:Renderings.IRendering">
+            <summary>
+            Base for a rendering model
+            </summary>
+        </member>
+        <member name="P:Renderings.IRendering.IsFullPage">
+            <summary>
+            Allows renderings to be filtered if they shouldn't be displayed as a full page
+            </summary>
+        </member>
+        <member name="M:Renderings.IRendering.GetPartialView(System.String)">
+            <summary>
+            Simple rendering engine allowing custom views per rendering tag, for example a custom razor view
+            </summary>
+            <param name="renderTag"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Renderings.IRenderingAliasResolver">
+            <summary>
+            Resolves string to Type and Type to string, in addition to getting property aliases from Type's
+            </summary>
+        </member>
+        <member name="M:Renderings.IRenderingAliasResolver.ResolveAlias(System.String)">
+            <summary>
+            Resolve a string alias into a Type
+            </summary>
+            <param name="documentAlias"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Renderings.IRenderingAliasResolver.ResolveAliases(System.Collections.Generic.ICollection{System.String})">
+            <summary>
+            Resolves multiple string aliases into Types
+            </summary>
+            <param name="documentAliases"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Renderings.IRenderingAliasResolver.ResolveType(System.Type)">
+            <summary>
+            Resolves a Type into a string alias
+            </summary>
+            <param name="renderingType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Renderings.IRenderingAliasResolver.ResolveTypes(System.Collections.Generic.ICollection{System.Type})">
+            <summary>
+            Resolves multiple Types into string aliases
+            </summary>
+            <param name="renderingTypes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Renderings.IRenderingAliasResolver.Resolve(System.String)">
+            <summary>
+            Resolves a string into a resolve result which may or may not have errors
+            </summary>
+            <param name="documentAlias"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Renderings.IRenderingAliasResolver.ResolvePropertyAlias``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+            <summary>
+            Resolves a property string alias from a Type expression
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Renderings.IRenderingCreatorScoped">
+            <summary>
+            Creates functions to create renderings with a source object, scoped suffix is convention implementations should be registered as a scoped lifetime
+            </summary>
+        </member>
+        <member name="M:Renderings.IRenderingCreatorScoped.GetCreator``1(System.String)">
+            <summary>
+            Gets a func creator given an alias
+            </summary>
+            <param name="alias"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Renderings.IRenderingTypeFinder">
+            <summary>
+            Finds types that implement IRendering
+            </summary>
+        </member>
+        <member name="M:Renderings.IRenderingTypeFinder.GetTypesFor``1">
+            <summary>
+            Get types for given IRendering implementation
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:Renderings.IRenderingTypeFinderSettings">
+            <summary>
+            Provides settings for IRenderTypeFinder
+            </summary>
+        </member>
+        <member name="P:Renderings.IRenderingTypeFinderSettings.TypesToFind">
+            <summary>
+            Types to discover implementations for
+            </summary>
+        </member>
+        <member name="P:Renderings.IRenderingTypeFinderSettings.AssembliesToScan">
+            <summary>
+            Assemblies to scan for view models, typically on the assembly with the view models
+            </summary>
+        </member>
+        <member name="M:Renderings.IRenderingTypeFinderSettings.AssemblyScannerFactory">
+            <summary>
+            Creates new IAssemblyScanner instance
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Renderings.IRenderingTypeResolver">
+            <summary>
+            Resolves a Func&lt;TSource,object> type for creating renderings
+            </summary>
+        </member>
+        <member name="M:Renderings.IRenderingTypeResolver.ResolveCreator``1(System.String)">
+            <summary>
+            Converts rendering alias into a Func creator that requires TSource constructor parameter and returns an object
+            </summary>
+            <param name="alias">document type string alias</param>
+            <returns>function to create view models or null</returns>
+        </member>
+        <member name="T:Renderings.RegisterRenderings">
+            <summary>
+            This startup module register all classes with RenderingDocumentAliasAttribute
+            </summary>
+        </member>
+        <member name="T:Renderings.RenderingAliasResolver">
+            <summary>
+            Default implementation fro IRenderingAliasResolver
+            </summary>
+        </member>
+        <member name="F:Renderings.RenderingAliasResolver._RenderingModels">
+            <summary>
+            Backing field, do not use directly, always use EnsureRenderingModels to ensure creation
+            </summary>
+        </member>
+        <member name="M:Renderings.RenderingAliasResolver.#ctor(DotNetStarter.Abstractions.IStartupConfiguration,DotNetStarter.Abstractions.IReflectionHelper)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="startupConfig"></param>
+            <param name="reflectionHelper"></param>
+        </member>
+        <member name="M:Renderings.RenderingAliasResolver.Resolve(System.String)">
+            <summary>
+            Resolves a string alias to a ResolveResult which may have errors
+            </summary>
+            <param name="documentAlias"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Renderings.RenderingAliasResolver.ResolveAlias(System.String)">
+            <summary>
+            Resolve a type from a document alias
+            </summary>
+            <param name="documentAlias"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Renderings.RenderingAliasResolver.ResolveAliases(System.Collections.Generic.ICollection{System.String})">
+            <summary>
+            Resolves many types from many aliases
+            </summary>
+            <param name="documentAliases"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Renderings.RenderingAliasResolver.ResolvePropertyAlias``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+            <summary>
+            Resolves a property alias from given expression
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Renderings.RenderingAliasResolver.ResolveType(System.Type)">
+            <summary>
+            Resolves a string alias from given type
+            </summary>
+            <param name="renderingModelType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Renderings.RenderingAliasResolver.ResolveTypes(System.Collections.Generic.ICollection{System.Type})">
+            <summary>
+            Resolves many types to many string aliases
+            </summary>
+            <param name="types"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Renderings.RenderingAliasResolver.GetPropertyAttributeValue``2(System.Reflection.MemberInfo,System.Func{``0,``1})">
+            <summary>
+            Gets a given attribute's value for memberinfo
+            </summary>
+            <typeparam name="TAttribute"></typeparam>
+            <typeparam name="TValue"></typeparam>
+            <param name="memberInfo"></param>
+            <param name="valueSelector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Renderings.RenderingAliasResolver.ResolveMemberInfo``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+            <summary>
+            Gets member info from an expression
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Renderings.RenderingCreatorScoped">
+            <summary>
+            Default implemenation of IRenderingCreatorScoped
+            </summary>
+        </member>
+        <member name="M:Renderings.RenderingCreatorScoped.#ctor(Renderings.IRenderingTypeResolver,DotNetStarter.Abstractions.ILocator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="renderingTypeResolver"></param>
+            <param name="scopedLocator"></param>
+        </member>
+        <member name="M:Renderings.RenderingCreatorScoped.#ctor(Renderings.IRenderingTypeResolver,DotNetStarter.Abstractions.ILocator,DotNetStarter.Abstractions.ILocatorScopedAccessor)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="renderingTypeResolver"></param>
+            <param name="locator"></param>
+            <param name="scopedLocator"></param>
+        </member>
+        <member name="M:Renderings.RenderingCreatorScoped.GetCreator``1(System.String)">
+            <summary>
+            Gets a creator Func for given Type, not if not in a scoped context, there will be issues
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="alias"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Renderings.RenderingDocumentAliasAttribute">
+            <summary>
+            Decorates classes used for renderings
+            </summary>
+        </member>
+        <member name="M:Renderings.RenderingDocumentAliasAttribute.#ctor(System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="documentAlias"></param>
+            <param name="description"></param>
+        </member>
+        <member name="P:Renderings.RenderingDocumentAliasAttribute.DocumentAlias">
+            <summary>
+            Document alias string
+            </summary>
+        </member>
+        <member name="P:Renderings.RenderingDocumentAliasAttribute.Description">
+            <summary>
+            Document description
+            </summary>
+        </member>
+        <member name="M:Renderings.RenderingDocumentAliasAttribute.ToString">
+            <summary>
+            String conversion
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Renderings.RenderingPropertyAliasAttribute">
+            <summary>
+            Decorates rendering properties for string aliases
+            </summary>
+        </member>
+        <member name="M:Renderings.RenderingPropertyAliasAttribute.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="propertyAlias"></param>
+        </member>
+        <member name="P:Renderings.RenderingPropertyAliasAttribute.PropertyAlias">
+            <summary>
+            String alias for property
+            </summary>
+        </member>
+        <member name="T:Renderings.RenderingTypeFinder">
+            <summary>
+            Default implementation for IRenderingTypeFinder
+            </summary>
+        </member>
+        <member name="M:Renderings.RenderingTypeFinder.#ctor(Renderings.IRenderingTypeFinderSettings)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="renderingTypeFinderSettings"></param>
+        </member>
+        <member name="M:Renderings.RenderingTypeFinder.GetTypesFor``1">
+            <summary>
+            Gets types for given IRenderings
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:Renderings.RenderingTypeResolver">
+            <summary>
+            Default for IRenderingTypeResolver
+            </summary>
+        </member>
+        <member name="M:Renderings.RenderingTypeResolver.#ctor(Renderings.IRenderingAliasResolver)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="renderingAliasResolver"></param>
+        </member>
+        <member name="M:Renderings.RenderingTypeResolver.ResolveCreator``1(System.String)">
+            <summary>
+            Resolves a Func creator for given alias
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="alias"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Renderings.ResolveResult">
+            <summary>
+            Provides information about a resolve request
+            </summary>
+        </member>
+        <member name="M:Renderings.ResolveResult.#ctor(System.Type,Renderings.RenderingDocumentAliasAttribute,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="modelType"></param>
+            <param name="descriptor"></param>
+            <param name="alias"></param>
+        </member>
+        <member name="P:Renderings.ResolveResult.ModelType">
+            <summary>
+            Matching model type for string alias or null
+            </summary>
+        </member>
+        <member name="P:Renderings.ResolveResult.Descriptor">
+            <summary>
+            Model type attribute or null
+            </summary>
+        </member>
+        <member name="P:Renderings.ResolveResult.DocumentAlias">
+            <summary>
+            String alias for model type
+            </summary>
+        </member>
+        <member name="P:Renderings.ResolveResult.HasErrors">
+            <summary>
+            True if either ModelType or Descriptor are null
+            </summary>
+        </member>
+    </members>
+</doc>

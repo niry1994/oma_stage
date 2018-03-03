@@ -1,0 +1,2038 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>KP.GmailApi</name>
+    </assembly>
+    <members>
+        <member name="M:KP.GmailApi.AuthorizationDelegatingHandler.GetTokenAsync(System.Threading.CancellationToken,System.Boolean)">
+            <summary>
+            Get an access token. Will return an valid existing token or retrieves a new one if expired.
+            Note that the token could still be invalid when revoked remotely or because of clock skew for example.
+            </summary>
+            <param name="cancellationToken"></param>
+            <param name="useExpiryCheck">True to return an existing token if not expired, false to force retrieval of new token</param>
+            <returns>An access token</returns>
+        </member>
+        <member name="M:KP.GmailApi.Builders.HistoryQueryStringBuilder.SetLabelId(System.String)">
+            <summary>
+            Only return messages with a label matching the ID.
+            </summary>
+            <param name="labelId">the label ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:KP.GmailApi.Builders.HistoryQueryStringBuilder.SetMaxResults(System.UInt32)">
+            <summary>
+            The maximum number of history records to return.
+            </summary>
+            <param name="maxResults"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KP.GmailApi.Builders.HistoryQueryStringBuilder.SetPageToken(System.String)">
+            <summary>
+            Page token to retrieve a specific page of results in the list.
+            </summary>
+            <param name="pageToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KP.GmailApi.Builders.HistoryQueryStringBuilder.SetStartHistoryId(System.UInt64)">
+            <summary>
+            Required. Returns history records after the specified startHistoryId.
+            The supplied startHistoryId should be obtained from the historyId of a message, thread, or previous list response.
+            History IDs increase chronologically but are not contiguous with random gaps in between valid IDs.
+            Supplying an invalid or out of date startHistoryId typically returns an HTTP 404 error code.
+            A historyId is typically valid for at least a week, but in some circumstances may be valid for only a few hours.
+            If you receive an HTTP 404 error response, your application should perform a full sync.
+            If you receive no nextPageToken in the response, there are no updates to retrieve and you can store the returned historyId for a future request.
+            </summary>
+            <param name="startHistoryId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KP.GmailApi.Builders.ThreadQueryStringBuilder.SetRequestAction(KP.GmailApi.Common.Enums.ThreadRequestAction)">
+            <summary>
+            Set action which doesn't require an ID
+            </summary>
+            <param name="action">The action to set</param>
+            <returns>This builder</returns>
+        </member>
+        <member name="M:KP.GmailApi.Builders.ThreadQueryStringBuilder.SetRequestAction(KP.GmailApi.Common.Enums.ThreadRequestAction,System.String)">
+            <summary>
+            Set action which requires an ID
+            </summary>
+            <param name="action">The action to set</param>
+            <param name="id">Id of the message</param>
+            <returns>This builder</returns>
+        </member>
+        <member name="M:KP.GmailApi.Builders.ThreadQueryStringBuilder.SetIncludeSpamAndTrash(System.Boolean)">
+            <summary>
+            Include threads from SPAM and TRASH in the results.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:KP.GmailApi.Builders.ThreadQueryStringBuilder.SetLabelIds(System.String[])">
+            <summary>
+            Only return threads with labels that match all of the specified label IDs.
+            </summary>
+            <param name="labelIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KP.GmailApi.Builders.ThreadQueryStringBuilder.SetMaxResults(System.UInt16)">
+            <summary>
+            Maximum number of threads to return.
+            </summary>
+            <param name="maxResults"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KP.GmailApi.Builders.ThreadQueryStringBuilder.SetPageToken(System.String)">
+            <summary>
+            Page token to retrieve a specific page of results in the list.
+            </summary>
+            <param name="pageToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KP.GmailApi.Builders.ThreadQueryStringBuilder.SetQuery(System.String)">
+            <summary>
+            Only return threads matching the specified query.
+            Supports the same query format as the Gmail search box. For example, "from:someuser@example.com rfc822msgid: is:unread".
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KP.GmailApi.Builders.MessageQueryStringBuilder.SetRequestAction(KP.GmailApi.Common.Enums.MessageRequestAction)">
+            <summary>
+            Set action which doesn't require an ID
+            </summary>
+            <param name="action">The action to set</param>
+            <returns>This builder</returns>
+        </member>
+        <member name="M:KP.GmailApi.Builders.MessageQueryStringBuilder.SetRequestAction(KP.GmailApi.Common.Enums.MessageRequestAction,System.String)">
+            <summary>
+            Set action which requires an ID
+            </summary>
+            <param name="action">The action to set</param>
+            <param name="id">Id of the message</param>
+            <returns>This builder</returns>
+        </member>
+        <member name="M:KP.GmailApi.Builders.MessageQueryStringBuilder.SetMaxResults(System.UInt16)">
+            <summary>
+            Maximum number of messages to return.
+            </summary>
+            <param name="maxResults"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KP.GmailApi.Builders.MessageQueryStringBuilder.SetIncludeSpamAndTrash(System.Boolean)">
+            <summary>
+            Include messages from SPAM and TRASH in the results.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:KP.GmailApi.Builders.MessageQueryStringBuilder.SetLabelIds(System.String[])">
+            <summary>
+            Only return messages with labels that match all of the specified label IDs.
+            </summary>
+            <param name="labelIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KP.GmailApi.Builders.MessageQueryStringBuilder.SetQuery(System.String)">
+            <summary>
+            Only return messages matching the specified query.
+            Supports the same query format as the Gmail search box. For example, "from:someuser@example.com rfc822msgid: is:unread".
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KP.GmailApi.Builders.MessageQueryStringBuilder.SetPageToken(System.String)">
+            <summary>
+            Page token to retrieve a specific page of results in the list.
+            </summary>
+            <param name="pageToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KP.GmailApi.Builders.QueryStringBuilder.SetRequestAction(System.Enum,System.String)">
+            <summary>
+            Set action which requires an ID
+            </summary>
+            <param name="action"></param>
+            <param name="id">Id of the message</param>
+            <returns></returns>
+        </member>
+        <member name="M:KP.GmailApi.Builders.QueryStringBuilder.SetRequestAction(System.Enum)">
+            <summary>
+            Set action which doesn't require an ID.
+            </summary>
+            <param name="action"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KP.GmailApi.Builders.QueryStringBuilder.SetField(System.String,System.Object[])">
+            <summary>
+            Add field(s) to the query string. Null values are ignored.
+            </summary>
+            <param name="key">The key of the field</param>
+            <param name="values">Zero or more nullable values.</param>
+        </member>
+        <member name="M:KP.GmailApi.Builders.LabelQueryStringBuilder.SetRequestAction(KP.GmailApi.Common.Enums.LabelRequestAction)">
+            <summary>
+            Set action which doesn't require an ID
+            </summary>
+            <param name="action">The action to set</param>
+            <returns>This builder</returns>
+        </member>
+        <member name="M:KP.GmailApi.Builders.LabelQueryStringBuilder.SetRequestAction(KP.GmailApi.Common.Enums.LabelRequestAction,System.String)">
+            <summary>
+            Set action which requires an ID
+            </summary>
+            <param name="action">The action to set</param>
+            <param name="id">Id of the message</param>
+            <returns>This builder</returns>
+        </member>
+        <member name="T:KP.GmailApi.Common.Enums.DraftRequestAction">
+            <summary>
+            Actions available for email drafts.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Common.Enums.ThreadFields.Messages">
+            <summary>
+            All the message fields (excluded: HistoryId, Id and Snippet)
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Common.Enums.ThreadFields.All">
+            <summary>
+            All values of Messages plus NextPageToken, ResultSizeEstimate, HistoryId, Id and Snippet
+            </summary>
+        </member>
+        <member name="T:KP.GmailApi.Common.Enums.RequestAction">
+            <summary>
+            A list of all the available actions.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Common.Enums.DraftFormat.Full">
+            <summary>
+            Returns the full email message data with body content parsed in the payload field; the raw field is not used. (default)
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Common.Enums.DraftFormat.Metadata">
+            <summary>
+            Returns only email message ID, labels, and email headers.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Common.Enums.DraftFormat.Minimal">
+            <summary>
+            Returns only email message ID and labels; does not return the email headers, body, or payload.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Common.Enums.DraftFormat.Raw">
+            <summary>
+            Returns the full email message data with body content in the raw field as a base64url encoded string; the payload field is not used.
+            </summary>
+        </member>
+        <member name="T:KP.GmailApi.Common.Enums.ThreadRequestAction">
+            <summary>
+            Actions available for email threads.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Common.Enums.ThreadFormat.Full">
+            <summary>
+            Returns the parsed email message content in the payload field and the raw field is not used. (default)
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Common.Enums.ThreadFormat.Metadata">
+            <summary>
+            Returns email headers with message metadata such as identifiers and labels.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Common.Enums.ThreadFormat.Minimal">
+            <summary>
+            Only returns email message metadata such as identifiers and labels, it does not return the email headers, body, or payload.
+            </summary>
+        </member>
+        <member name="T:KP.GmailApi.Common.Enums.LabelRequestAction">
+            <summary>
+            Actions available for email labels.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Common.Enums.UploadType.Media">
+            <summary>
+            Simple upload. Upload the media only, without any metadata.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Common.Enums.UploadType.Multipart">
+            <summary>
+            Multipart upload. Upload both the media and its metadata, in a single request.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Common.Enums.UploadType.Resumable">
+            <summary>
+            Resumable upload. Upload the file in a resumable fashion, using a series of at least two requests where the first request includes the metadata.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Common.Enums.MessageFields.Messages">
+            <summary>
+            All the message fields (excluded: NextPageToken and ResultSizeEstimate)
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Common.Enums.MessageFields.All">
+            <summary>
+            All values of Messages plus NextPageToken and ResultSizeEstimate
+            </summary>
+        </member>
+        <member name="T:KP.GmailApi.Common.Enums.MessageRequestAction">
+            <summary>
+            Actions available for emails.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Common.Enums.MessageFormat.Full">
+            <summary>
+            Returns the full email message data with body content parsed in the payload field; the raw field is not used. (default)
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Common.Enums.MessageFormat.Metadata">
+            <summary>
+            Returns only email message ID, labels, and email headers.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Common.Enums.MessageFormat.Minimal">
+            <summary>
+            Returns only email message ID and labels; does not return the email headers, body, or payload.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Common.Enums.MessageFormat.Raw">
+            <summary>
+            Returns the full email message data with body content in the raw field as a base64url encoded string; the payload field is not used.
+            </summary>
+        </member>
+        <member name="T:KP.GmailApi.Common.GmailException">
+            <summary>
+            An error from the Gmail API service
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Common.GmailException.StatusCode">
+            <summary>
+            The <see cref="T:System.Net.HttpStatusCode"/> returned by Gmail
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Common.GmailException.Errors">
+            <summary>
+            The errors returned by Gmail if any
+            </summary>
+        </member>
+        <member name="T:KP.GmailApi.Common.Extensions">
+            <summary>
+            Common extensions
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Common.Extensions.GetValidFilename(System.String,System.Char)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="replaceWith"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KP.GmailApi.Common.Extensions.GetAttribute``2(``1)">
+            <summary>
+            Get the Attribute of an Enum
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="T2"></typeparam>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KP.GmailApi.Common.Extensions.GetFlagEnumValues``1(``0)">
+            <summary>
+            Get the integer values of an Enum which uses [Flags]
+            </summary>
+            <param name="e"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KP.GmailApi.Common.Extensions.ToBase64UrlString(System.String)">
+            <summary>
+            Encodes to an URL Base64 encoded string
+            See http://tools.ietf.org/html/rfc4648#section-5: 'Base 64 Encoding with URL and Filename Safe Alphabet'
+            </summary>
+            <param name="plainText"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KP.GmailApi.Common.Extensions.FromBase64UrlString(System.String)">
+            <summary>
+            Decodes an URL Base64 encoded string
+            See http://tools.ietf.org/html/rfc4648#section-5: 'Base 64 Encoding with URL and Filename Safe Alphabet'
+            </summary>
+            <param name="base64"></param>
+            <returns></returns>
+        </member>
+        <member name="T:KP.GmailApi.Common.GmailProxy">
+            <summary>
+            Handles requests to the Gmail service and parses the response.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Common.GmailProxy.ApiBaseUrl">
+            <summary>
+            The URL to send requests to the Gmail API service
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Common.GmailProxy.#ctor(System.Net.Http.DelegatingHandler)">
+            <summary>
+            Takes care of all I/O to Gmail.
+            </summary>
+            <param name="handler">An optional handler to handle authentication or caching for example</param>
+        </member>
+        <member name="P:KP.GmailApi.Common.ParseOptions.Path">
+            <summary>
+            A JPath expression
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Common.ErrorResponseParser.Parse(System.Net.HttpStatusCode,System.String)">
+            <summary>
+            Parses the <paramref name="content"/> to an Gmail API error response.
+            </summary>
+            <param name="statusCode"></param>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="P:KP.GmailApi.Common.StringValueAttribute.Text">
+            <summary>
+            the Text set on the Field
+            </summary>
+        </member>
+        <member name="T:KP.GmailApi.GmailScopes">
+            <summary>
+            Scopes defined by Gmail.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.GmailScopes.Readonly">
+            <summary>
+            View your emails messages and settings.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.GmailScopes.Modify">
+            <summary>
+            View and modify but not delete your email.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.GmailScopes.Compose">
+            <summary>
+            Manage drafts and send emails.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.GmailScopes.Insert">
+            <summary>
+            Insert mail into your mailbox.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.GmailScopes.Labels">
+            <summary>
+            Manage mailbox labels.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.GmailScopes.Send">
+            <summary>
+            Send email on your behalf.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.GmailScopes.ManageBasicSettings">
+            <summary>
+            Manage your basic mail settings.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.GmailScopes.ManageSensitiveSettings">
+            <summary>
+            Manage your sensitive mail settings, including who can manage your mail.
+            Note: Operations guarded by this scope are restricted to administrative use only.
+            They are only available to Google Apps customers using a service account with domain-wide delegation.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.GmailScopes.FullAccess">
+            <summary>
+            Full access to the account, including permanent deletion of threads and messages.
+            This scope should only be requested if your application needs to immediately and permanently delete threads and messages,
+            bypassing Trash; all other actions can be performed with less permissive scopes.
+            </summary>
+        </member>
+        <member name="T:KP.GmailApi.Models.Extensions.PayloadExtensions">
+            <summary>
+            Extensions for <see cref="T:KP.GmailApi.Models.PayloadBase"/> and <see cref="T:KP.GmailApi.Models.Payload"/>.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.Extensions.PayloadExtensions.GetMimeType(KP.GmailApi.Models.PayloadBase)">
+            <summary>
+            Get the MIME type of this payload.
+            </summary>
+            <param name="payload"></param>
+            <returns>The MIME type or Unknown</returns>
+        </member>
+        <member name="M:KP.GmailApi.Models.Extensions.PayloadExtensions.GetHeader(KP.GmailApi.Models.PayloadBase,KP.GmailApi.Models.HeaderName)">
+            <summary>
+            Get the <see cref="T:KP.GmailApi.Models.Header"/> with a <see cref="T:KP.GmailApi.Models.HeaderName"/>
+            </summary>
+            <param name="payload"></param>
+            <param name="headerName"></param>
+            <returns>A <see cref="T:KP.GmailApi.Models.Header"/> or null</returns>
+        </member>
+        <member name="M:KP.GmailApi.Models.Extensions.PayloadExtensions.GetHeaderValue(KP.GmailApi.Models.PayloadBase,KP.GmailApi.Models.HeaderName)">
+            <summary>
+            Get the value of an <see cref="T:KP.GmailApi.Models.Header"/> with a <see cref="T:KP.GmailApi.Models.HeaderName"/>
+            </summary>
+            <param name="payload"></param>
+            <param name="headerName"></param>
+            <returns>The value of the header or an empty string when not found</returns>
+        </member>
+        <member name="M:KP.GmailApi.Models.Extensions.PayloadExtensions.GetBodyData(KP.GmailApi.Models.Payload,KP.GmailApi.Models.MimeType)">
+            <summary>
+            Get the body from a part of a given MIME type
+            </summary>
+            <param name="payload"></param>
+            <param name="mimeType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:KP.GmailApi.Models.CreateLabelInput">
+            <summary>
+            The input required to create a label.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.CreateLabelInput.#ctor(System.String)">
+            <summary>
+            The input required to create a label.
+            </summary>
+            <param name="name">The display name of the label</param>
+        </member>
+        <member name="P:KP.GmailApi.Models.CreateLabelInput.Name">
+            <summary>
+            The display name of the label.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.CreateLabelInput.MessageListVisibility">
+            <summary>
+            The visibility of messages with this label in the message list in the Gmail web interface.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.CreateLabelInput.LabelListVisibility">
+            <summary>
+            The visibility of the label in the label list in the Gmail web interface.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.CreateLabelInput.ToString">
+            <summary>
+            A string with the values of the properties from this <see cref="T:KP.GmailApi.Models.CreateLabelInput"/>
+            </summary>
+            <returns>A string</returns>
+        </member>
+        <member name="T:KP.GmailApi.Models.Draft">
+            <summary>
+            A draft email in the user's mailbox.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Draft.Id">
+            <summary>
+            The immutable ID of the draft.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Draft.Message">
+            <summary>
+            The message content of the draft.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.Draft.ToString">
+            <summary>
+            A string with the values of the properties from this <see cref="T:KP.GmailApi.Models.Draft"/>
+            </summary>
+            <returns>A string</returns>
+        </member>
+        <member name="F:KP.GmailApi.Models.LabelFields.Id">
+            <summary>
+            The immutable ID of the label.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.LabelFields.LabelListVisibility">
+            <summary>
+            The visibility of the label in the label list in the Gmail web interface.
+            Acceptable values are:
+            <list type="bullet">
+            <item><description>labelShow: Show the label in the label list. (Default)</description></item>
+            <item><description>labelHide: Do not show the label in the label list.</description></item>
+            /// <item><description>labelShowIfUnread: Show the label if there are any unread messages with that label.</description></item>
+            </list>
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.LabelFields.MessageListVisibility">
+            <summary>
+            The visibility of messages with this label in the message list in the Gmail web interface.
+            Acceptable values are:
+            <list type="bullet">
+            <item><description>show: Show the label in the message list. (Default)</description></item>
+            <item><description>hide: Do not show the label in the message list.</description></item>
+            </list>
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.LabelFields.MessagesTotal">
+            <summary>
+            The total number of messages with the label.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.LabelFields.MessagesUnread">
+            <summary>
+            The number of unread messages with the label.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.LabelFields.Name">
+            <summary>
+            The display name of the label.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.LabelFields.ThreadsTotal">
+            <summary>
+            The total number of threads with the label.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.LabelFields.ThreadsUnread">
+            <summary>
+            The number of unread threads with the label.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.LabelFields.Type">
+            <summary>
+            The owner type for the label.
+            User labels are created by the user and can be modified and deleted by the user and can be applied to any message or thread.
+            System labels are internally created and cannot be added, modified, or deleted.
+            System labels may be able to be applied to or removed from messages and threads under some circumstances but this is not guaranteed.
+            For example, users can apply and remove the INBOX and UNREAD labels from messages and threads, but cannot apply or remove the DRAFTS or SENT labels from messages or threads.
+            Acceptable values are:
+            <list type="bullet">
+            <item><description>system: Labels created by Gmail.</description></item>
+            <item><description>user: Custom labels created by the user or application.</description></item>
+            </list>
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.LabelFields.All">
+            <summary>
+            All the label fields
+            </summary>
+        </member>
+        <member name="T:KP.GmailApi.Models.LabelListVisibility">
+            <summary>
+            The visibility of the label in the label list in the Gmail web interface.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.LabelListVisibility.Show">
+            <summary>
+            Show the label in the label list. (Default)
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.LabelListVisibility.Hide">
+            <summary>
+            Do not show the label in the label list.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.LabelListVisibility.ShowIfUnread">
+            <summary>
+            Show the label if there are any unread messages with that label.
+            </summary>
+        </member>
+        <member name="T:KP.GmailApi.Models.Attachment">
+            <summary>
+            The body of a single MIME message part.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.Attachment.#ctor">
+            <summary>
+            An Attachment
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Attachment.AttachmentId">
+            <summary>
+            When present, contains the ID of an external attachment that can be retrieved in a separate messages.attachments.get request.
+            When not present, the entire content of the message part body is contained in the data field.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Attachment.Size">
+            <summary>
+            Total number of bytes in the body of the message part.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Attachment.Data">
+            <summary>
+            The body data of a MIME message part. May be empty for MIME container types that have no message body or when the body data is sent as a separate attachment.
+            An attachment ID is present if the body data is contained in a separate attachment.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Attachment.PlainData">
+            <summary>
+            Get / set the <see cref="P:KP.GmailApi.Models.Attachment.Data"/> Base64 URL decoded.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.Attachment.ToString">
+            <summary>
+            A string with the values of the properties from this <see cref="T:KP.GmailApi.Models.Attachment"/>
+            </summary>
+            <returns>A string</returns>
+        </member>
+        <member name="T:KP.GmailApi.Models.GmailError">
+            <summary>
+            The details of a single error returned by Gmail.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.GmailError.#ctor">
+            <summary>
+            The details of a single error returned by Gmail.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.GmailError.Message">
+            <summary>
+            The  message of the error.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.GmailError.ToString">
+            <summary>
+            A string with the values of the properties from this <see cref="T:KP.GmailApi.Models.GmailError"/>
+            </summary>
+            <returns>A string</returns>
+        </member>
+        <member name="T:KP.GmailApi.Models.Header">
+            <summary>
+            A header containing a name and a value. 
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.Header.#ctor">
+            <summary>
+            A header containing a name and a value. 
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Header.Name">
+            <summary>
+            The name of the header before the : separator. For example, To.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Header.IsExtensionHeader">
+            <summary>
+            Returns wehter the header is an extension header, which starts with 'X-'.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Header.Value">
+            <summary>
+            The value of the header after the : separator. For example, someuser@example.com.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Header.ImfHeader">
+            <summary>
+            Get the Internet Message Format (IMF) header if valid.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.Header.ToString">
+            <summary>
+            A string with the values of the properties from this <see cref="T:KP.GmailApi.Models.Header"/>
+            </summary>
+            <returns>A string</returns>
+        </member>
+        <member name="T:KP.GmailApi.Models.HeaderName">
+            <summary>
+            Headers according to the RFC 2822, RFC 2369 and RFC 2919 Internet Message Format standard.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.Unknown">
+            <summary>
+            Header is not a known type.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.Subject">
+            <summary>
+            The name of the RFC 2822 header that stores the subject.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.Comments">
+            <summary>
+            The name of the RFC 2822 header that stores human-readable comments.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.References">
+            <summary>
+             The name of the RFC 2822 header that is used to identify the thread to which this message refers.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.From">
+            <summary>
+             The name of the RFC 2822 header that stores the mail author(s).
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.To">
+            <summary>
+            The name of the RFC 2822 header that stores the primary mail recipients.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.Cc">
+            <summary>
+            The name of the RFC 2822 header that stores the carbon copied mail recipients.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.Bcc">
+            <summary>
+            The name of the RFC 2822 header that stores the blind carbon copied mail recipients.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.Keywords">
+            <summary>
+            The name of the RFC 2822 header that stores human-readable keywords.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.Received">
+            <summary>
+            The name of the RFC 2822 header that store additional tracing data.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.Sender">
+            <summary>
+            The name of the RFC 2822 header that stores the actual mail transmission agent, if this differs from the author of the message.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.Date">
+            <summary>
+            The name of the RFC 2822 header that stores the mail date.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.ResentDate">
+            <summary>
+            The name of the RFC 2822 header that stores the date the message was resent.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.ReplyTo">
+            <summary>
+            The name of the RFC 2822 header that stores the reply-to address.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.InReplyTo">
+            <summary>
+            The name of the RFC 2822 header that stores the message id of the message that to which this email is a reply.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.MessageId">
+            <summary>
+            The name of the RFC 2822 header that stores the message id.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.ResentFrom">
+            <summary>
+            The name of the RFC 2822 header that stores the originator of the resent message.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.ResentSender">
+            <summary>
+            The name of the RFC 2822 header that stores the transmission agent of the resent message.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.ResentTo">
+            <summary>
+            The name of the RFC 2822 header that stores the recipients of the resent message.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.ResentCc">
+            <summary>
+            The name of the RFC 2822 header that stores the carbon copied recipients of the resent message.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.ResentBcc">
+            <summary>
+            The name of the RFC 2822 header that stores the blind carbon copied recipients of the resent message.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.OrigDate">
+            <summary>
+            The name of the RFC 2822 header that consists of the field name "Date" followed by a date-time specification.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.DeliveredTo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.ReturnPath">
+            <summary>
+            The name of the RFC 2822 header that store the tracing data for the return path.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.MimeVersion">
+            <summary>
+            The name of the RFC 2822 header that stores the MIME version.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.ContentType">
+            <summary>
+            The name of the MIME header that stores the content type.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.ContentTransferEncoding">
+            <summary>
+            The name of the RFC 2822 header that stores a single token specifying the type of encoding.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.DkimSignature">
+            <summary>
+            The name of the RFC 4871 header DomainKeys Identified Mail (DKIM).
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.ListHelp">
+            <summary>
+            The name of the RFC 2369 header that is the most important of the RFC 2369 headers. It would be acceptable for a list
+            manager to include only this field, since by definition it SHOULD direct the user to complete instructions for all other commands.
+            Typically, the URL specified would request the help file, perhaps incorporating an HTML form for list commands, for the list, and
+            alternatively provide access to an instructive website.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.ListSubscribe">
+            <summary>
+            The name of the RFC 2369 header that describes the command (preferably using mail) to directly subscribe the user (request addition to the list).
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.ListUnsubscribe">
+            <summary>
+            The name of the RFC 2369 header that describes the command (preferably using mail) to directly unsubscribe the user (removing them from the list).
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.ListPost">
+            <summary>
+            The name of the RFC 2369 header that describes the method for posting to the list.
+            This is typically the address of the list, but MAY be a moderator, or
+            potentially some other form of submission. For the special case of a
+            list that does not allow posting (e.g., an announcements list), the
+            List-Post field may contain the special value "NO".
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.ListOwner">
+            <summary>
+            The name of the RFC 2369 header that identifies the path to contact a human administrator for the list.
+            The URL MAY contain the address of a administrator for the list, the mail system administrator, or any
+            other person who can handle user contact for the list. There is no
+            need to specify List-Owner if it is the same person as the mail system administrator (postmaster).
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.ListArchive">
+            <summary>
+            The name of the RFC 2369 header that describes how to access archives for the list.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.HeaderName.ListId">
+            <summary>
+            The name of the RFC 2919 header, see https://www.ietf.org/rfc/rfc2919.txt for more info.
+            </summary>
+        </member>
+        <member name="T:KP.GmailApi.Models.Label">
+            <summary>
+            Labels are used to categorize messages and threads within the user's mailbox.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.Label.Inbox">
+            <summary>
+            The inbox label
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.Label.Sent">
+            <summary>
+            The sent label
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.Label.Trash">
+            <summary>
+            The trash label
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.Label.Important">
+            <summary>
+            The important label
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.Label.Unread">
+            <summary>
+            The unread label
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.Label.Spam">
+            <summary>
+            The spam label
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.Label.Starred">
+            <summary>
+            The starred label
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.Label.Draft">
+            <summary>
+            The draft label
+            </summary>
+        </member>
+        <member name="T:KP.GmailApi.Models.Label.Category">
+            <summary>
+            Category labels
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.Label.Category.Updates">
+            <summary>
+            Updates category label
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.Label.Category.Promotions">
+            <summary>
+            Promotions category label
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.Label.Category.Social">
+            <summary>
+            Social category label
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.Label.Category.Personal">
+            <summary>
+            Personal category label
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.Label.Category.Forums">
+            <summary>
+            Forums category label
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Label.Id">
+            <summary>
+            The immutable ID of the label.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Label.Name">
+            <summary>
+            The display name of the label.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Label.MessageListVisibility">
+            <summary>
+            The visibility of messages with this label in the message list in the Gmail web interface.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Label.LabelListVisibility">
+            <summary>
+            The visibility of the label in the label list in the Gmail web interface.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Label.Type">
+            <summary>
+            The owner type for the label.
+            User labels are created by the user and can be modified and deleted by the user and can be applied to any message or thread.
+            System labels are internally created and cannot be added, modified, or deleted.
+            System labels may be able to be applied to or removed from messages and threads under some circumstances but this is not guaranteed.
+            For example, users can apply and remove the INBOX and UNREAD labels from messages and threads, but cannot apply or remove the DRAFTS or SENT labels from messages or threads.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Label.MessagesTotal">
+            <summary>
+            The total number of messages with the label.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Label.MessagesUnread">
+            <summary>
+            The number of unread messages with the label.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Label.ThreadsTotal">
+            <summary>
+            The total number of threads with the label.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Label.ThreadsUnread">
+            <summary>
+            The number of unread threads with the label.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Label.IsSystemLabel">
+            <summary>
+            If the <see cref="T:KP.GmailApi.Models.Label"/> is a system label.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Label.IsUserLabel">
+            <summary>
+            If the <see cref="T:KP.GmailApi.Models.Label"/> is a user defined label.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.Label.ToString">
+            <summary>
+            A string with the values of the properties from this <see cref="T:KP.GmailApi.Models.Label"/>
+            </summary>
+            <returns>A string</returns>
+        </member>
+        <member name="T:KP.GmailApi.Models.LabelType">
+            <summary>
+            The owner type for the label.
+            User labels are created by the user and can be modified and deleted by the user and can be applied to any message or thread.
+            System labels are internally created and cannot be added, modified, or deleted.
+            System labels may be able to be applied to or removed from messages and threads under some circumstances but this is not guaranteed.
+            For example, users can apply and remove the INBOX and UNREAD labels from messages and threads, but cannot apply or remove the DRAFTS or SENT labels from messages or threads.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.LabelType.User">
+            <summary>
+            Custom labels created by the user or application.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.LabelType.System">
+            <summary>
+            Labels created by Gmail.
+            </summary>
+        </member>
+        <member name="T:KP.GmailApi.Models.Message">
+            <summary>
+            An email message.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.Message.#ctor">
+            <summary>
+            An email message.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Message.Id">
+            <summary>
+            The immutable ID of the message.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Message.ThreadId">
+            <summary>
+            The ID of the thread the message belongs to. To add a message or draft to a thread, the following criteria must be met:
+            <list type="disc">
+            <item><description>1. The requested threadId must be specified on the Message or Draft.Message you supply with your request.</description></item>
+            <item><description>2. The References and In-Reply-To headers must be set in compliance with the RFC 2822 standard.</description></item>
+            <item><description>3. The Subject headers must match.</description></item>
+            </list>
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Message.HistoryId">
+            <summary>
+            The ID of the last history record that modified this message.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Message.LabelIds">
+            <summary>
+            List of IDs of labels applied to this message.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Message.Snippet">
+            <summary>
+            A short part of the message text.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Message.Payload">
+            <summary>
+            The parsed email structure in the message parts.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Message.SizeEstimate">
+            <summary>
+            Estimated size in bytes of the message.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Message.Raw">
+            <summary>
+            The entire email message in an RFC 2822 formatted and base64url encoded string.
+            Returned in messages.get and drafts.get responses when the format=RAW parameter is supplied.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Message.PlainRaw">
+            <summary>
+            Get / set the entire email message decoded from the <see cref="P:KP.GmailApi.Models.Message.Raw"/> RFC 2822 formatted and base64url encoded string.
+            Returned in messages.get and drafts.get responses when the format=RAW parameter is supplied.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Message.Subject">
+            <summary>
+            Get the 'Subject' header value.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Message.From">
+            <summary>
+            Get the 'From' header value.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Message.To">
+            <summary>
+            Get the 'To' header value.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Message.Html">
+            <summary>
+            Get the body of the message in HTML
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Message.PlainText">
+            <summary>
+            Get the body of the message as plain text
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.Message.ToString">
+            <summary>
+            A string with the values of the properties from this <see cref="T:KP.GmailApi.Models.Message"/>
+            </summary>
+            <returns>A string</returns>
+        </member>
+        <member name="T:KP.GmailApi.Models.DraftList">
+            <summary>
+            Contains a list of drafts.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.DraftList.#ctor">
+            <summary>
+            Contains a list of drafts.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.DraftList.Drafts">
+            <summary>
+            List of drafts.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.DraftList.NextPageToken">
+            <summary>
+            Token to retrieve the next page of results in the list.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.DraftList.ResultSizeEstimate">
+            <summary>
+            Estimated total number of results.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.DraftList.ToString">
+            <summary>
+            A string with the values of the properties from this <see cref="T:KP.GmailApi.Models.DraftList"/>
+            </summary>
+            <returns>A string</returns>
+        </member>
+        <member name="T:KP.GmailApi.Models.HistoryList">
+            <summary>
+            Contains the history of added and deleted messages and labels.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.HistoryList.#ctor">
+            <summary>
+            Contains the history of added and deleted messages and labels.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.HistoryList.Messages">
+            <summary>
+            List with messages, with only the ID and/or ThreadID set.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.HistoryList.HistoryId">
+            <summary>
+            The mailbox sequence ID.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.HistoryList.NextPageToken">
+            <summary>
+            Token to retrieve the next page of results in the list.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.HistoryList.ToString">
+            <summary>
+            A string with the values of the properties from this <see cref="T:KP.GmailApi.Models.HistoryList"/>
+            </summary>
+            <returns>A string</returns>
+        </member>
+        <member name="T:KP.GmailApi.Models.ModifyThreadInput">
+            <summary>
+            The input to modify a thread.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.ModifyThreadInput.#ctor">
+            <summary>
+            The input to modify a thread.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.ModifyThreadInput.AddLabelIds">
+            <summary>
+            A list of IDs of labels to add to this thread.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.ModifyThreadInput.RemoveLabelIds">
+            <summary>
+            A list of IDs of labels to remove from this thread.
+            </summary>
+        </member>
+        <member name="T:KP.GmailApi.Models.ThreadList">
+            <summary>
+            Contains a list of threads.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.ThreadList.#ctor">
+            <summary>
+            Contains a list of threads.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.ThreadList.Threads">
+            <summary>
+            List with threads.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.ThreadList.NextPageToken">
+            <summary>
+            Token to retrieve the next page of results in the list.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.ThreadList.ResultSizeEstimate">
+            <summary>
+            Estimated total number of results.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.ThreadList.ToString">
+            <summary>
+            A string with the values of the properties from this <see cref="T:KP.GmailApi.Models.ThreadList"/>
+            </summary>
+            <returns>A string</returns>
+        </member>
+        <member name="T:KP.GmailApi.Models.MessageList">
+            <summary>
+            Contains a list of messages.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.MessageList.#ctor">
+            <summary>
+            Contains a list of messages.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.MessageList.Messages">
+            <summary>
+            List with messages, with only the ID and/or ThreadID set.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.MessageList.NextPageToken">
+            <summary>
+            Token to retrieve the next page of results in the list.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.MessageList.ResultSizeEstimate">
+            <summary>
+            Estimated total number of results.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.MessageList.ToString">
+            <summary>
+            A string with the values of the properties from this <see cref="T:KP.GmailApi.Models.MessageList"/>
+            </summary>
+            <returns>A string</returns>
+        </member>
+        <member name="T:KP.GmailApi.Models.MessageListVisibility">
+            <summary>
+            The visibility of messages with this label in the message list in the Gmail web interface.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.MessageListVisibility.Show">
+            <summary>
+            Show the label in the message list. (Default)
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.MessageListVisibility.Hide">
+            <summary>
+            Do not show the label in the message list.
+            </summary>
+        </member>
+        <member name="T:KP.GmailApi.Models.MimeType">
+            <summary>
+            A Multipurpose Internet Mail Extensions (MIME) type.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.MimeType.Unknown">
+            <summary>
+            Not a predefined MIME type.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.MimeType.TextPlain">
+            <summary>
+            The text/plain MIME type.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.MimeType.TextHtml">
+            <summary>
+            The text/html MIME type.
+            </summary>
+        </member>
+        <member name="F:KP.GmailApi.Models.MimeType.ApplicationJavascript">
+            <summary>
+            The application/javascript MIME type.
+            </summary>
+        </member>
+        <member name="T:KP.GmailApi.Models.OAuth2Token">
+            <summary>
+            An OAuth 2.0 token.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.OAuth2Token.AccessToken">
+            <summary>
+            A string representing an authorization issued to the client.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.OAuth2Token.RefreshToken">
+            <summary>
+            A credential used to obtain access tokens.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.OAuth2Token.TokenType">
+            <summary>
+            Provides the client with the information required to successfully utilize the access token
+            to make a protected resource request (along with type-specific attributes), for example: Bearer.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.OAuth2Token.ExpiresIn">
+            <summary>
+            The lifetime in seconds of the access token.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.OAuth2Token.ExpirationDate">
+            <summary>
+            The expiration date of the access token.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.OAuth2Token.ToString">
+            <summary>
+            A string with the values of the properties from this <see cref="T:KP.GmailApi.Models.OAuth2Token"/>
+            </summary>
+            <returns>A string</returns>
+        </member>
+        <member name="T:KP.GmailApi.Models.Payload">
+            <summary>
+            The parsed email structure in the message parts.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.Payload.#ctor">
+            <summary>
+            The parsed email structure in the message parts.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Payload.Parts">
+            <summary>
+            The child MIME message parts of this part. This only applies to container MIME message parts, for example multipart/*.
+            For non- container MIME message part types, such as text/plain, this field is empty. For more information, see RFC 1521.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.Payload.ToString">
+            <summary>
+            A string with the values of the properties from this <see cref="T:KP.GmailApi.Models.Payload"/>
+            </summary>
+            <returns>A string</returns>
+        </member>
+        <member name="T:KP.GmailApi.Models.PayloadBase">
+            <summary>
+            The parsed email structure in the message parts.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.PayloadBase.#ctor">
+            <summary>
+            The parsed email structure in the message parts.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.PayloadBase.PartId">
+            <summary>
+            The immutable ID of the message part.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.PayloadBase.MimeType">
+            <summary>
+            The MIME type of the message part.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.PayloadBase.Filename">
+            <summary>
+            The filename of the attachment. Only present if this message part represents an attachment.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.PayloadBase.Headers">
+            <summary>
+            List of headers on this message part. For the top-level message part, representing the entire message payload,
+            it will contain the standard RFC 2822 email headers such as To, From, and Subject.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.PayloadBase.Body">
+            <summary>
+            The message part body for this part, which may be empty for container MIME message parts.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.PayloadBase.XHeaders">
+            <summary>
+            Get the extension ('X-') headers
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.PayloadBase.ToString">
+            <summary>
+            A string with the values of the properties from this <see cref="T:KP.GmailApi.Models.PayloadBase"/>
+            </summary>
+            <returns>A string</returns>
+        </member>
+        <member name="T:KP.GmailApi.Models.GmailErrorResponse">
+            <summary>
+            An error returned by Gmail.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.GmailErrorResponse.#ctor">
+            <summary>
+            An error returned by Gmail.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.GmailErrorResponse.Code">
+            <summary>
+            The <see cref="T:System.Net.HttpStatusCode"/> value.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.GmailErrorResponse.Message">
+            <summary>
+            The global message of the error(s).
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.GmailErrorResponse.Errors">
+            <summary>
+            A list with <see cref="T:KP.GmailApi.Models.GmailError"/>
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.GmailErrorResponse.ToString">
+            <summary>
+            A string with the values of the properties from this <see cref="T:KP.GmailApi.Models.GmailErrorResponse"/>
+            </summary>
+            <returns>A string</returns>
+        </member>
+        <member name="T:KP.GmailApi.Models.MessageThread">
+            <summary>
+            A collection of messages representing a conversation.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.MessageThread.#ctor">
+            <summary>
+            A collection of messages representing a conversation.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.MessageThread.Id">
+            <summary>
+            The unique ID of the thread.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.MessageThread.Snippet">
+            <summary>
+            A short part of the message text.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.MessageThread.HistoryId">
+            <summary>
+            The ID of the last history record that modified this thread.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.MessageThread.Messages">
+            <summary>
+            The list of messages in the thread.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.MessageThread.ToString">
+            <summary>
+            A string with the values of the properties from this <see cref="T:KP.GmailApi.Models.MessageThread"/>
+            </summary>
+            <returns>A string</returns>
+        </member>
+        <member name="T:KP.GmailApi.Models.Profile">
+            <summary>
+            Gets the current user's Gmail profile.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Profile.EmailAddress">
+            <summary>
+            The user's email address.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Profile.MessagesTotal">
+            <summary>
+            The total number of messages in the mailbox.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Profile.ThreadsTotal">
+            <summary>
+            The total number of threads in the mailbox.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.Profile.HistoryId">
+            <summary>
+            The ID of the mailbox's current history record.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.Profile.ToString">
+            <summary>
+            A string with the values of the properties from this <see cref="T:KP.GmailApi.Models.Profile"/>
+            </summary>
+            <returns>A string</returns>
+        </member>
+        <member name="T:KP.GmailApi.Models.UpdateLabelInput">
+            <summary>
+            The input required to update a label.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Models.UpdateLabelInput.#ctor(System.String)">
+            <summary>
+            The input required to update a label.
+            </summary>
+            <param name="id">The ID of the label to update</param>
+        </member>
+        <member name="P:KP.GmailApi.Models.UpdateLabelInput.Id">
+            <summary>
+            The ID of the label to update.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.UpdateLabelInput.Name">
+            <summary>
+            The display name of the label.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.UpdateLabelInput.MessageListVisibility">
+            <summary>
+            The visibility of messages with this label in the message list in the Gmail web interface.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Models.UpdateLabelInput.LabelListVisibility">
+            <summary>
+            The visibility of the label in the label list in the Gmail web interface.
+            </summary>
+        </member>
+        <member name="T:KP.GmailApi.Opensslkey">
+            <summary>
+            OpenSSL Public and Private Key Parser.
+             Reads and parses:
+               (1) OpenSSL PEM or DER public keys
+               (2) OpenSSL PEM or DER traditional SSLeay private keys (encrypted and unencrypted)
+               (3) PKCS #8 PEM or DER encoded private keys (encrypted and unencrypted)
+             Keys in PEM format must have headers/footers .
+             Encrypted Private Key in SSLEay format not supported in DER
+             Removes header/footer lines.
+             For traditional SSLEAY PEM private keys, checks for encrypted format and
+             uses PBE to extract 3DES key.
+             For SSLEAY format, only supports encryption format: DES-EDE3-CBC
+             For PKCS #8, only supports PKCS#5 v2.0  3des.
+             Parses private and public key components and returns .NET RSA object.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Opensslkey.GetRsaFromPemKey(System.String)">
+            <summary>
+            Decode PEM pubic, private or pkcs8 key.
+            </summary>
+            <param name="pemKey"></param>
+            <returns></returns>
+        </member>
+        <member name="T:KP.GmailApi.Services.Extensions.DraftServiceExtensions">
+            <summary>
+            Extensions for <see cref="T:KP.GmailApi.Services.DraftService"/>.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Services.Extensions.DraftServiceExtensions.CreateAsync(KP.GmailApi.Services.DraftService,System.String,System.String)">
+            <summary>
+            Create a draft.
+            </summary>
+            <param name="service">Gmail API service instance</param>
+            <param name="subject">The subject of the draft</param>
+            <param name="body">The body of the draft</param>
+            <returns></returns>
+        </member>
+        <member name="M:KP.GmailApi.Services.Extensions.DraftServiceExtensions.ListAsync(KP.GmailApi.Services.DraftService)">
+            <summary>
+            Lists the drafts in the user's inbox.
+            </summary>
+            <param name="service">Gmail API service instance</param>
+            <returns>A list of Drafts</returns>
+        </member>
+        <member name="T:KP.GmailApi.Services.Extensions.LabelServiceExtensions">
+            <summary>
+            Extensions for <see cref="T:KP.GmailApi.Services.LabelService"/>.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Services.Extensions.LabelServiceExtensions.ListAsync(KP.GmailApi.Services.LabelService,KP.GmailApi.Models.LabelType)">
+            <summary>
+            Lists all labels in the user's mailbox of the given type.
+            </summary>
+            <param name="service">Gmail API service instance</param>
+            <param name="type">The label type</param>
+            <returns>A list of Labels</returns>
+        </member>
+        <member name="M:KP.GmailApi.Services.Extensions.LabelServiceExtensions.GetByNameAsync(KP.GmailApi.Services.LabelService,System.String)">
+            <summary>
+            Lists all labels in the user's mailbox of the given type.
+            </summary>
+            <param name="service">Gmail API service instance</param>
+            <param name="name">The name of the label defined by the user</param>
+            <returns>A list of Labels</returns>
+        </member>
+        <member name="T:KP.GmailApi.Services.Extensions.MessageServiceExtensions">
+            <summary>
+            Extensions for <see cref="T:KP.GmailApi.Services.MessageService"/>.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Services.Extensions.MessageServiceExtensions.CountAsync(KP.GmailApi.Services.MessageService,System.String[])">
+            <summary>
+            Get the number of estimated messages of the specified label.
+            </summary>
+            <param name="service">Gmail API service instance</param>
+            <param name="labelIds">Only return messages with labels that match all of the specified label IDs</param>
+            <returns>The number of messages</returns>
+        </member>
+        <member name="M:KP.GmailApi.Services.Extensions.MessageServiceExtensions.CountAsync(KP.GmailApi.Services.MessageService)">
+            <summary>
+            Get the number of estimated messages in the user's inbox.
+            </summary>
+            <param name="service">Gmail API service instance</param>
+            <returns>The number of messages</returns>
+        </member>
+        <member name="M:KP.GmailApi.Services.Extensions.MessageServiceExtensions.ListIdsAsync(KP.GmailApi.Services.MessageService)">
+            <summary>
+            Lists the message IDs of the user's inbox.
+            </summary>
+            <param name="service">Gmail API service instance</param>
+            <returns>A <see cref="T:KP.GmailApi.Models.MessageList"/> instance</returns>
+        </member>
+        <member name="M:KP.GmailApi.Services.Extensions.MessageServiceExtensions.ListAsync(KP.GmailApi.Services.MessageService)">
+            <summary>
+            Lists the messages of the user's inbox.
+            </summary>
+            <param name="service">Gmail API service instance</param>
+            <returns>A list of Messages</returns>
+        </member>
+        <member name="M:KP.GmailApi.Services.Extensions.MessageServiceExtensions.ListAsync(KP.GmailApi.Services.MessageService,System.String,System.UInt16,System.Boolean,System.String[])">
+            <summary>
+            Lists the messages filtered with a query.
+            </summary>
+            <param name="service">Gmail API service instance</param>
+            <param name="query">Only return messages matching the specified query.
+            Supports the same query format as the Gmail search box. For example, "from:someuser@example.com rfc822msgid: is:unread".</param>
+            <param name="maxResults">Maximum number of messages to return</param>
+            <param name="includeSpamAndTrash">Include messages from SPAM and TRASH in the results.</param>
+            <param name="labelIds">Only return messages with labels that match all of the specified label IDs</param>
+            <returns>A list of Messages</returns>
+        </member>
+        <member name="M:KP.GmailApi.Services.Extensions.MessageServiceExtensions.ListByLabelAsync(KP.GmailApi.Services.MessageService,System.String,System.String,System.UInt16,System.Boolean)">
+            <summary>
+            Lists the messages in the specified label.
+            </summary>
+            <param name="service">Gmail API service instance</param>
+            <param name="labelId">Only return messages with the specified label ID</param>
+            <param name="query">Only return messages matching the specified query.
+            Supports the same query format as the Gmail search box. For example, "from:someuser@example.com rfc822msgid: is:unread".</param>
+            <param name="maxResults">Maximum number of messages to return</param>
+            <param name="includeSpamAndTrash">Include messages from SPAM and TRASH in the results.</param>
+            <returns>A list of Messages</returns>
+        </member>
+        <member name="M:KP.GmailApi.Services.Extensions.MessageServiceExtensions.ListByLabelsAsync(KP.GmailApi.Services.MessageService,System.String[],System.String,System.UInt16,System.Boolean)">
+            <summary>
+            Lists the messages in the specified labels.
+            </summary>
+            <param name="service">Gmail API service instance</param>
+            <param name="labelIds">Only return messages with labels that match all of the specified label IDs</param>
+            <param name="query">Only return messages matching the specified query.
+            Supports the same query format as the Gmail search box. For example, "from:someuser@example.com rfc822msgid: is:unread".</param>
+            <param name="maxResults">Maximum number of messages to return</param>
+            <param name="includeSpamAndTrash">Include messages from SPAM and TRASH in the results.</param>
+            <returns>A list of Messages</returns>
+        </member>
+        <member name="T:KP.GmailApi.Services.Extensions.ThreadServiceExtensions">
+            <summary>
+            Extensions for <see cref="T:KP.GmailApi.Services.ThreadService"/>.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Services.Extensions.ThreadServiceExtensions.CountAsync(KP.GmailApi.Services.ThreadService,System.String[])">
+            <summary>
+            Get the number of estimated threads of the specified label.
+            </summary>
+            <param name="service">Gmail API service instance</param>
+            <param name="labelIds">Only return threads with labels that match all of the specified label IDs</param>
+            <returns>The number of threads</returns>
+        </member>
+        <member name="M:KP.GmailApi.Services.Extensions.ThreadServiceExtensions.CountAsync(KP.GmailApi.Services.ThreadService)">
+            <summary>
+            Get the number of estimated threads in the user's inbox.
+            </summary>
+            <param name="service">Gmail API service instance</param>
+            <returns>The number of threads</returns>
+        </member>
+        <member name="M:KP.GmailApi.Services.Extensions.ThreadServiceExtensions.ListIdsAsync(KP.GmailApi.Services.ThreadService)">
+            <summary>
+            Lists the thread IDs of the user's inbox.
+            </summary>
+            <param name="service">Gmail API service instance</param>
+            <returns>A <see cref="T:KP.GmailApi.Models.ThreadList"/> instance</returns>
+        </member>
+        <member name="M:KP.GmailApi.Services.Extensions.ThreadServiceExtensions.ListAsync(KP.GmailApi.Services.ThreadService)">
+            <summary>
+            Lists the threads of the user's inbox.
+            </summary>
+            <param name="service">Gmail API service instance</param>
+            <returns>A list of Threads</returns>
+        </member>
+        <member name="M:KP.GmailApi.Services.Extensions.ThreadServiceExtensions.ListAsync(KP.GmailApi.Services.ThreadService,System.String,System.UInt16,System.Boolean,System.String[])">
+            <summary>
+            Lists the threads filtered with a query.
+            </summary>
+            <param name="service">Gmail API service instance</param>
+            <param name="query">Only return threads matching the specified query.
+            Supports the same query format as the Gmail search box. For example, "from:someuser@example.com rfc822msgid: is:unread".</param>
+            <param name="maxResults">Maximum number of threads to return</param>
+            <param name="includeSpamAndTrash">Include threads from SPAM and TRASH in the results.</param>
+            <param name="labelIds">Only return threads with labels that match all of the specified label IDs</param>
+            <returns>A list of threads</returns>
+        </member>
+        <member name="M:KP.GmailApi.Services.Extensions.ThreadServiceExtensions.ListByLabelAsync(KP.GmailApi.Services.ThreadService,System.String,System.String,System.UInt16,System.Boolean)">
+            <summary>
+            Lists the threads in the specified label.
+            </summary>
+            <param name="service">Gmail API service instance</param>
+            <param name="labelId">Only return threads with the specified label ID</param>
+            <param name="query">Only return threads matching the specified query.
+            Supports the same query format as the Gmail search box. For example, "from:someuser@example.com rfc822msgid: is:unread".</param>
+            <param name="maxResults">Maximum number of threads to return</param>
+            <param name="includeSpamAndTrash">Include threads from SPAM and TRASH in the results.</param>
+            <returns>A list of threads</returns>
+        </member>
+        <member name="M:KP.GmailApi.Services.Extensions.ThreadServiceExtensions.ListByLabelsAsync(KP.GmailApi.Services.ThreadService,System.String[],System.String,System.UInt16,System.Boolean)">
+            <summary>
+            Lists the threads in the specified labels.
+            </summary>
+            <param name="service">Gmail API service instance</param>
+            <param name="labelIds">Only return threads with labels that match all of the specified label IDs</param>
+            <param name="query">Only return threads matching the specified query.
+            Supports the same query format as the Gmail search box. For example, "from:someuser@example.com rfc822msgid: is:unread".</param>
+            <param name="maxResults">Maximum number of threads to return</param>
+            <param name="includeSpamAndTrash">Include threads from SPAM and TRASH in the results.</param>
+            <returns>A list of threads</returns>
+        </member>
+        <member name="T:KP.GmailApi.Services.DraftService">
+            <summary>
+            Service to get, create, update and delete email drafts.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Services.DraftService.GetAsync(System.String)">
+            <summary>
+            Gets the specified draft.
+            </summary>
+            <param name="id">The ID of the draft to retrieve.</param>
+        </member>
+        <member name="M:KP.GmailApi.Services.DraftService.CreateAsync(KP.GmailApi.Models.Draft)">
+            <summary>
+            Creates a new draft with the DRAFT label.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Services.DraftService.ListIdsAsync">
+            <summary>
+            Lists the drafts ID's in the user's mailbox.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Services.DraftService.DeleteAsync(System.String)">
+            <summary>
+            Immediately and permanently deletes the specified draft. Does not simply trash it.
+            </summary>
+            <param name="id">The ID of the draft to delete</param>
+        </member>
+        <member name="T:KP.GmailApi.Services.AttachmentService">
+            <summary>
+            Service for getting email attachments.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Services.AttachmentService.GetAsync(System.String,System.String)">
+            <summary>
+            Gets the specified message attachment.
+            </summary>
+            <param name="messageId">The ID of the message containing the attachment</param>
+            <param name="id">The ID of the attachment</param>
+            <returns></returns>
+        </member>
+        <member name="T:KP.GmailApi.Services.HistoryService">
+            <summary>
+            Service for getting the history of emails.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Services.HistoryService.ListAsync(System.UInt64,System.String,System.String,System.UInt32)">
+            <summary>
+            Lists the history of all changes to the given mailbox. History results are returned in chronological order (increasing historyId).
+            </summary>
+            <param name="startHistoryId">Returns history records after the specified startHistoryId</param>
+            <param name="labelId">Only return messages with a label matching the ID</param>
+            <param name="pageToken">Page token to retrieve a specific page of results in the list</param>
+            <param name="maxResults">The maximum number of history records to return. Use zero ('0') to use the default.</param>
+            <returns></returns>
+        </member>
+        <member name="T:KP.GmailApi.Services.LabelService">
+            <summary>
+            Service to get, create, update and delete email labels.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Services.LabelService.GetAsync(System.String)">
+            <summary>
+            Gets the specified label.
+            </summary>
+            <param name="id">The ID of the label to retrieve.</param>
+            <returns></returns>
+        </member>
+        <member name="M:KP.GmailApi.Services.LabelService.ListAsync">
+            <summary>
+            Lists all labels in the user's mailbox.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:KP.GmailApi.Services.LabelService.CreateAsync(KP.GmailApi.Models.CreateLabelInput)">
+            <summary>
+            Creates a new label.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Services.LabelService.DeleteAsync(System.String)">
+            <summary>
+            WARNING: Immediately and permanently deletes the specified label and removes it from any messages and threads that it is applied to.
+            </summary>
+            <param name="id">The ID of the label to delete.</param>
+        </member>
+        <member name="M:KP.GmailApi.Services.LabelService.UpdateAsync(KP.GmailApi.Models.UpdateLabelInput)">
+            <summary>
+            Updates the specified label.
+            </summary>
+            <param name="labelInput"></param>
+        </member>
+        <member name="M:KP.GmailApi.Services.LabelService.PatchAsync(KP.GmailApi.Models.Label)">
+            <summary>
+            Updates the specified label. This method supports patch semantics.
+            </summary>
+            <param name="label"></param>
+        </member>
+        <member name="T:KP.GmailApi.Services.MessageService">
+            <summary>
+            Service to get, create, update and delete emails.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.Services.MessageService.Attachments">
+            <summary>
+            Service for getting email attachments.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Services.MessageService.ListIdsAsync(System.String,System.UInt16,System.Boolean,System.String[])">
+            <summary>
+            Lists the message IDs.
+            </summary>
+            <param name="query">Only return messages matching the specified query.
+            Supports the same query format as the Gmail search box. For example, "from:someuser@example.com rfc822msgid: is:unread".</param>
+            <param name="maxResults">Maximum number of messages to return</param>
+            <param name="includeSpamAndTrash">Include messages from SPAM and TRASH in the results.</param>
+            <param name="labelIds">Only return messages with labels that match all of the specified label IDs</param>
+            <returns>A <see cref="T:KP.GmailApi.Models.MessageList"/> containing the message IDs</returns>
+        </member>
+        <member name="M:KP.GmailApi.Services.MessageService.GetAsync(System.String)">
+            <summary>
+            Gets the specified message
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KP.GmailApi.Services.MessageService.DeleteAsync(System.String)">
+            <summary>
+            Immediately and permanently deletes the specified message. WARNING: This operation CANNOT be undone. Prefer messages.trash instead.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Services.MessageService.TrashAsync(System.String)">
+            <summary>
+            Moves the specified message to the trash.
+            </summary>
+            <param name="id">The ID of the message to Trash.</param>
+            <returns></returns>
+        </member>
+        <member name="M:KP.GmailApi.Services.MessageService.UnTrashAsync(System.String)">
+            <summary>
+            Removes the specified message from the trash.
+            </summary>
+            <param name="id">The ID of the message to remove from Trash</param>
+        </member>
+        <member name="T:KP.GmailApi.Services.ThreadService">
+            <summary>
+            Service for getting email threads.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.Services.ThreadService.GetAsync(System.String)">
+            <summary>
+            Gets the specified thread.
+            </summary>
+            <param name="id">The ID of the thread to retrieve.</param>
+            <returns></returns>
+        </member>
+        <member name="M:KP.GmailApi.Services.ThreadService.ListIdsAsync(System.String,System.UInt16,System.Boolean,System.String[])">
+            <summary>
+            Lists the thread IDs.
+            </summary>
+            <param name="query">Only return threads matching the specified query.
+            Supports the same query format as the Gmail search box. For example, "from:someuser@example.com rfc822msgid: is:unread".</param>
+            <param name="maxResults">Maximum number of threads to return</param>
+            <param name="includeSpamAndTrash">Include threads from SPAM and TRASH in the results.</param>
+            <param name="labelIds">Only return threads with labels that match all of the specified label IDs</param>
+            <returns>A <see cref="T:KP.GmailApi.Models.ThreadList"/> containing the thread IDs</returns>
+        </member>
+        <member name="M:KP.GmailApi.Services.ThreadService.DeleteAsync(System.String)">
+            <summary>
+            Immediately and permanently deletes the specified thread. WARNING: This operation cannot be undone. Prefer threads.trash instead.
+            </summary>
+            <param name="id">ID of the Thread to delete.</param>
+            <returns></returns>
+        </member>
+        <member name="M:KP.GmailApi.Services.ThreadService.ModifyAsync(System.String,KP.GmailApi.Models.ModifyThreadInput)">
+            <summary>
+            Modifies the labels applied to the thread. This applies to all messages in the thread.
+            </summary>
+            <param name="id">The ID of the thread to modify</param>
+            <param name="input">The input to modify a thread</param>
+            <returns></returns>
+        </member>
+        <member name="M:KP.GmailApi.Services.ThreadService.TrashAsync(System.String)">
+            <summary>
+            Moves the specified thread to the trash.
+            </summary>
+            <param name="id">The ID of the thread to Trash</param>
+            <returns></returns>
+        </member>
+        <member name="M:KP.GmailApi.Services.ThreadService.UntrashAsync(System.String)">
+            <summary>
+            Removes the specified thread from the trash.
+            </summary>
+            <param name="id">The ID of the thread to remove from Trash</param>
+            <returns></returns>
+        </member>
+        <member name="T:KP.GmailApi.GmailClient">
+            <summary>
+            Contains all services provided by Gmail.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.GmailClient.Messages">
+            <summary>
+            Service to get, create, update and delete emails.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.GmailClient.Drafts">
+            <summary>
+            Service to get, create, update and delete email drafts.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.GmailClient.Labels">
+            <summary>
+            Service to get, create, update and delete email labels.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.GmailClient.Threads">
+            <summary>
+            Service for getting email threads.
+            </summary>
+        </member>
+        <member name="P:KP.GmailApi.GmailClient.History">
+            <summary>
+            Service for getting the history of emails.
+            </summary>
+        </member>
+        <member name="M:KP.GmailApi.GmailClient.#ctor(KP.GmailApi.Models.ServiceAccountCredential,System.String,KP.GmailApi.GmailScopes)">
+            <summary>
+            Access to all Gmail services.
+            </summary>
+            <param name="accountCredential">The Google Account Credentials</param>
+            <param name="emailAddress">The emailaddress of the user to impersonate</param>
+            <param name="scopes">The required Gmail scopes</param>
+        </member>
+        <member name="M:KP.GmailApi.GmailClient.#ctor(KP.GmailApi.Models.ServiceAccountCredential,System.String,System.String)">
+            <summary>
+            Access to all Gmail services.
+            </summary>
+            <param name="accountCredential">The Google Account Credentials</param>
+            <param name="emailAddress">The emailaddress of the user to impersonate</param>
+            <param name="scopes">The required Gmail scopes, separated by space</param>
+        </member>
+        <member name="M:KP.GmailApi.GmailClient.GetProfileAsync">
+            <summary>
+            Gets the current user's Gmail profile.
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

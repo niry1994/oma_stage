@@ -1,0 +1,53 @@
+﻿@model TestAutomatisé.Models.Gmail
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h1>@ViewBag.messageErreur</h1>
+    <div> 
+      @using (Html.BeginForm("Index", "Email",FormMethod.Post, new { enctype = "multipart/form-data" }))
+      { 
+            <center>
+                <table>
+                    <tr>
+                        <td style="width:80px">
+                            to:
+                        </td>
+                        <td>@Html.TextBoxFor(model => model.To)</td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Subject:
+                        </td>
+                        <td>@Html.TextBoxFor(model => model.Subject)</td>
+                    </tr>
+
+                    <tr>
+                        <td valign="top">
+                            body
+                        </td>
+                        <td>@Html.TextAreaFor(model => model.Body)</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="submit" value="send" />
+                        </td>
+                    </tr>
+                </table>
+                <br/>
+                <span style="color:green">@ViewBag.Message</span>
+            </center>
+        }
+    </div>
+</body>
+</html>
